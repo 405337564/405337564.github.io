@@ -62,6 +62,194 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-内网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/01/内网渗透/" class="article-date">
+  <time datetime="2019-04-01T09:08:38.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/01/内网渗透/">内网渗透</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+<!-- Table of Contents -->
+
+        <h2 id="3-内网渗透"><a href="#3-内网渗透" class="headerlink" title="3.内网渗透"></a>3.内网渗透</h2><h3 id="3-1-Window信息收集"><a href="#3-1-Window信息收集" class="headerlink" title="3.1.Window信息收集"></a>3.1.Window信息收集</h3><h4 id="3-1-1-基本命令"><a href="#3-1-1-基本命令" class="headerlink" title="3.1.1.基本命令"></a>3.1.1.基本命令</h4><ul>
+<li>查询所有计算机名称<code>dsquery computer</code></li>
+<li>查询配置<code>systeminfo</code></li>
+<li>查看版本<code>ver</code></li>
+<li>进程信息<code>tasklist /svc</code></li>
+<li>查看所有环境变量<code>set</code></li>
+<li>查看计划任务<code>schtasks /QUERY /fo LIST /v</code></li>
+<li>查看安装驱动<code>DRIVERQUERY</code></li>
+</ul>
+<h4 id="3-1-2-域信息"><a href="#3-1-2-域信息" class="headerlink" title="3.1.2.域信息"></a>3.1.2.域信息</h4><ul>
+<li>获取当前组的计算机名<code>net view</code></li>
+<li>当前所有域<code>net view /domain</code></li>
+<li>查看域中的用户名<code>dsquery user</code></li>
+<li>查看域组名称<code>net group /domain</code></li>
+<li>查看域管理员<code>net group &quot;Domain Admins&quot; /domain</code></li>
+<li>查看域控制器<code>net group &quot;Domain controllers&quot;</code></li>
+</ul>
+<h4 id="3-1-3-用户信息"><a href="#3-1-3-用户信息" class="headerlink" title="3.1.3.用户信息"></a>3.1.3.用户信息</h4><ul>
+<li>查看用户<code>net user</code></li>
+<li>查看在线用户<code>qwinsta / query user</code></li>
+<li>查看当前计算机名，全名，用户名，系统版本，工作站域，登陆域<code>net config Workstation</code></li>
+</ul>
+<h4 id="3-1-4-网络信息"><a href="#3-1-4-网络信息" class="headerlink" title="3.1.4.网络信息"></a>3.1.4.网络信息</h4><ul>
+<li>域控信息<code>nltest /dclist:xx</code></li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/01/内网渗透/" data-id="cjtz8dfbt0003i4v6qlmkczgm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-信息收集" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/01/信息收集/" class="article-date">
+  <time datetime="2019-04-01T08:24:45.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/01/信息收集/">信息收集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+<!-- Table of Contents -->
+
+        <h2 id="2-信息收集"><a href="#2-信息收集" class="headerlink" title="2.信息收集"></a>2.信息收集</h2><h3 id="2-1-域名信息收集"><a href="#2-1-域名信息收集" class="headerlink" title="2.1.域名信息收集"></a>2.1.域名信息收集</h3><ul>
+<li><strong>Whois</strong><ul>
+<li>whois  域名</li>
+<li>在线查询：<a href="https://www.aizhan.com，" target="_blank" rel="noopener">https://www.aizhan.com，</a> <a href="https://whois.domaintools.com，" target="_blank" rel="noopener">https://whois.domaintools.com，</a> <a href="https://whois.icann.org" target="_blank" rel="noopener">https://whois.icann.org</a></li>
+</ul>
+</li>
+<li><p><strong>子域名收集</strong></p>
+<ul>
+<li><strong>利用第三方查询</strong><ul>
+<li>DNSDumpster</li>
+<li>Virustotal</li>
+<li>CrtSearch</li>
+<li>threatminer</li>
+</ul>
+</li>
+<li><strong>ASN</strong><ul>
+<li><code>whois -h whois.radb.net -- &#39;-i origin AS111111&#39; | grep -Eo &quot;([0-9.]+){4}/[0-9]+&quot; | uniq</code></li>
+<li><code>nmap --script targets-asn --script-args targets-asn.asn=15169</code></li>
+</ul>
+</li>
+<li>CSP规则中获取</li>
+<li>子域爆破</li>
+<li>PassiveDNS</li>
+<li><strong>利用兄弟域名查询流程</strong><ul>
+<li>查询域名注册邮箱</li>
+<li>通过域名查询备案号</li>
+<li>通过备案号查询域名</li>
+<li>反查注册邮箱</li>
+<li>反差注册人</li>
+<li>通过注册人查询到的域名再查询邮箱</li>
+<li>通过上一步邮箱去查询域名</li>
+<li>查询以上获取出的域名的子域名</li>
+</ul>
+</li>
+<li>利用域传送漏洞</li>
+<li>SSL/TLS证书中可能会有多个域名的信息</li>
+<li>DNS记录中的SPF记录</li>
+</ul>
+</li>
+<li><p>若目标使用cdn，绕过cdn找到ip</p>
+</li>
+</ul>
+<h3 id="2-2-站点信息收集"><a href="#2-2-站点信息收集" class="headerlink" title="2.2.站点信息收集"></a>2.2.站点信息收集</h3><ul>
+<li><p><strong>判断网站是Windows架构还是Linux架构</strong></p>
+<ul>
+<li>Linux大小写敏感，Windows大小写不敏感</li>
+</ul>
+</li>
+<li><p><strong>扫描敏感文件</strong></p>
+<ul>
+<li>robots.txt</li>
+<li>crossdomain.xml</li>
+<li>sitemap.xml</li>
+<li>xx.tar.gz</li>
+<li>xx.bak</li>
+<li>等</li>
+</ul>
+</li>
+<li><p><strong>确定网站采用的语言、框架、中间件服务器、第三方库</strong></p>
+<ul>
+<li>查看源代码</li>
+<li>找后缀，比如php/asp/jsp</li>
+<li>看header里面有没有信息</li>
+<li>根据Cookie判断</li>
+<li>根据报错信息判断</li>
+<li>根据默认页面判断</li>
+<li>根据css图片等资源的hash值判断</li>
+</ul>
+</li>
+<li><p><strong>探测有没有WAF，如果有，什么类型的</strong></p>
+<ul>
+<li>有WAF，找绕过方式</li>
+<li>没有，进行下一步</li>
+</ul>
+</li>
+<li><p><strong>扫描敏感目录，看是否存在信息泄露</strong></p>
+<ul>
+<li>扫描之前先自己尝试几个的url，人为看看反应</li>
+</ul>
+</li>
+<li><p><strong>使用爬虫爬取网站信息</strong></p>
+</li>
+<li><p><strong>拿到一定信息后，通过拿到的目录名称，文件名称及文件扩展名了解网站开发人员的命名思路，确定其命名规则，推测出更多的目录及文件名</strong></p>
+<p>(<a href="https://422926799.github.io/2019/02/07/Penetration-test-memo-incomplete-version/" target="_blank" rel="noopener">https://422926799.github.io/2019/02/07/Penetration-test-memo-incomplete-version/</a>)</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/01/信息收集/" data-id="cjtz8dfbq0002i4v6dnx5g9u7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-web安全学习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/31/web安全学习笔记/" class="article-date">
@@ -767,7 +955,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/web安全学习笔记/" data-id="cjtx691tj0000ccv6ncrdg0k9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/web安全学习笔记/" data-id="cjtz8dfck0005i4v6ayu9tdv1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -834,7 +1022,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjtx641d90000kov6scnro7qz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/ssh-vps实现外网渗透/" data-id="cjtz8dfbn0001i4v6hdpiiz0b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -873,7 +1061,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/hello-world/" data-id="cjtx641fg0001kov6zvtbhy7i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/hello-world/" data-id="cjtz8dfbd0000i4v6g0zrqqg9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1052,7 +1240,7 @@ __asm
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjtx641hg0002kov649amo0y6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/利用metasploit生成免杀后门/" data-id="cjtz8dfc00004i4v6tvsa1zcr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1080,7 +1268,7 @@ __asm
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -1093,6 +1281,14 @@ __asm
       <ul>
         
           <li>
+            <a href="/2019/04/01/内网渗透/">内网渗透</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/01/信息收集/">信息收集</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/31/web安全学习笔记/">web安全学习笔记</a>
           </li>
         
@@ -1102,10 +1298,6 @@ __asm
         
           <li>
             <a href="/2019/02/01/hello-world/">hello-world</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/01/利用metasploit生成免杀后门/">利用metasploit生成免杀后门</a>
           </li>
         
       </ul>

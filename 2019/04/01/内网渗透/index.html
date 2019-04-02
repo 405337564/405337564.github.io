@@ -5,19 +5,19 @@
   
 
   
-  <title>hello-world | Hexo</title>
+  <title>内网渗透 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笨蛋自以为聪明，聪明人才知道自己是笨蛋。">
+  <meta name="description" content="3.内网渗透3.1.Window信息收集3.1.1.基本命令 查询所有计算机名称dsquery computer 查询配置systeminfo 查看版本ver 进程信息tasklist /svc 查看所有环境变量set 查看计划任务schtasks /QUERY /fo LIST /v 查看安装驱动DRIVERQUERY  3.1.2.域信息 获取当前组的计算机名net view 当前所有域net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello-world">
-<meta property="og:url" content="http://yoursite.com/2019/02/01/hello-world/index.html">
+<meta property="og:title" content="内网渗透">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/内网渗透/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="笨蛋自以为聪明，聪明人才知道自己是笨蛋。">
+<meta property="og:description" content="3.内网渗透3.1.Window信息收集3.1.1.基本命令 查询所有计算机名称dsquery computer 查询配置systeminfo 查看版本ver 进程信息tasklist /svc 查看所有环境变量set 查看计划任务schtasks /QUERY /fo LIST /v 查看安装驱动DRIVERQUERY  3.1.2.域信息 获取当前组的计算机名net view 当前所有域net">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T10:38:06.639Z">
+<meta property="og:updated_time" content="2019-04-01T09:34:24.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello-world">
-<meta name="twitter:description" content="笨蛋自以为聪明，聪明人才知道自己是笨蛋。">
+<meta name="twitter:title" content="内网渗透">
+<meta name="twitter:description" content="3.内网渗透3.1.Window信息收集3.1.1.基本命令 查询所有计算机名称dsquery computer 查询配置systeminfo 查看版本ver 进程信息tasklist /svc 查看所有环境变量set 查看计划任务schtasks /QUERY /fo LIST /v 查看安装驱动DRIVERQUERY  3.1.2.域信息 获取当前组的计算机名net view 当前所有域net">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-内网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/02/01/hello-world/" class="article-date">
-  <time datetime="2019-02-01T13:28:19.000Z" itemprop="datePublished">2019-02-01</time>
+    <a href="/2019/04/01/内网渗透/" class="article-date">
+  <time datetime="2019-04-01T09:08:38.000Z" itemprop="datePublished">2019-04-01</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hello-world
+      内网渗透
     </h1>
   
 
@@ -88,12 +88,37 @@
       
 <!-- Table of Contents -->
 
-        <p>笨蛋自以为聪明，聪明人才知道自己是笨蛋。</p>
+        <h2 id="3-内网渗透"><a href="#3-内网渗透" class="headerlink" title="3.内网渗透"></a>3.内网渗透</h2><h3 id="3-1-Window信息收集"><a href="#3-1-Window信息收集" class="headerlink" title="3.1.Window信息收集"></a>3.1.Window信息收集</h3><h4 id="3-1-1-基本命令"><a href="#3-1-1-基本命令" class="headerlink" title="3.1.1.基本命令"></a>3.1.1.基本命令</h4><ul>
+<li>查询所有计算机名称<code>dsquery computer</code></li>
+<li>查询配置<code>systeminfo</code></li>
+<li>查看版本<code>ver</code></li>
+<li>进程信息<code>tasklist /svc</code></li>
+<li>查看所有环境变量<code>set</code></li>
+<li>查看计划任务<code>schtasks /QUERY /fo LIST /v</code></li>
+<li>查看安装驱动<code>DRIVERQUERY</code></li>
+</ul>
+<h4 id="3-1-2-域信息"><a href="#3-1-2-域信息" class="headerlink" title="3.1.2.域信息"></a>3.1.2.域信息</h4><ul>
+<li>获取当前组的计算机名<code>net view</code></li>
+<li>当前所有域<code>net view /domain</code></li>
+<li>查看域中的用户名<code>dsquery user</code></li>
+<li>查看域组名称<code>net group /domain</code></li>
+<li>查看域管理员<code>net group &quot;Domain Admins&quot; /domain</code></li>
+<li>查看域控制器<code>net group &quot;Domain controllers&quot;</code></li>
+</ul>
+<h4 id="3-1-3-用户信息"><a href="#3-1-3-用户信息" class="headerlink" title="3.1.3.用户信息"></a>3.1.3.用户信息</h4><ul>
+<li>查看用户<code>net user</code></li>
+<li>查看在线用户<code>qwinsta / query user</code></li>
+<li>查看当前计算机名，全名，用户名，系统版本，工作站域，登陆域<code>net config Workstation</code></li>
+</ul>
+<h4 id="3-1-4-网络信息"><a href="#3-1-4-网络信息" class="headerlink" title="3.1.4.网络信息"></a>3.1.4.网络信息</h4><ul>
+<li>域控信息<code>nltest /dclist:xx</code></li>
+<li></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/hello-world/" data-id="cjtz8dfbd0000i4v6g0zrqqg9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/内网渗透/" data-id="cjtz8dfbt0003i4v6qlmkczgm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +127,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/12/ssh-vps实现外网渗透/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ssh+vps实现外网渗透
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/01/利用metasploit生成免杀后门/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/01/信息收集/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">利用metasploit生成免杀后门</div>
+      <div class="article-nav-title">信息收集</div>
     </a>
   
 </nav>
