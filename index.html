@@ -239,6 +239,571 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/Linux信息收集/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Azure">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ming.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/24/Linux信息收集/" itemprop="url">Linux信息收集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T23:33:27+08:00">
+                2019-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  992
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>获取内核，操作系统和设备信息</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uname -a</td>
+<td>打印所有可用的系统信息</td>
+</tr>
+<tr>
+<td>uname -r</td>
+<td>内核版本信息</td>
+</tr>
+<tr>
+<td>uname -n</td>
+<td>系统主机名字</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>主机名</td>
+</tr>
+<tr>
+<td>uname -m</td>
+<td>Linux内核架构(x86/x64)</td>
+</tr>
+<tr>
+<td>cat /proc/version</td>
+<td>内核信息</td>
+</tr>
+<tr>
+<td>cat /etc/*-release</td>
+<td>发布信息</td>
+</tr>
+<tr>
+<td>cat /etc/issue</td>
+<td>发布信息</td>
+</tr>
+<tr>
+<td>cat /proc/cpuinfo</td>
+<td>CPU信息</td>
+</tr>
+<tr>
+<td>df -a</td>
+<td>文件系统信息</td>
+</tr>
+</tbody>
+</table>
+<p>用户和组</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat /etc/passwd</td>
+<td>列出系统所有用户</td>
+</tr>
+<tr>
+<td>cat /etc/group</td>
+<td>列出系统所有组</td>
+</tr>
+<tr>
+<td>cat /etc/shadow</td>
+<td>列出所有用户hash(需要root权限)</td>
+</tr>
+<tr>
+<td>finger、finger user</td>
+<td>当前登录的用户、查询用户的基本信息</td>
+</tr>
+<tr>
+<td>users</td>
+<td>当前登录的用户</td>
+</tr>
+<tr>
+<td>who -a</td>
+<td>当前登录的用户</td>
+</tr>
+<tr>
+<td>w</td>
+<td>显示目前登入系统的用户有哪些人，以及他们正在执行的程序</td>
+</tr>
+<tr>
+<td>last</td>
+<td>显示登入过的用户信息</td>
+</tr>
+<tr>
+<td>lastlog</td>
+<td>显示系统中所有用户最近一次登录信息</td>
+</tr>
+<tr>
+<td>lastlog -u %username%</td>
+<td>显示指定用户最后一次登入信息</td>
+</tr>
+</tbody>
+</table>
+<p>用户和权限信息</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>whoami</td>
+<td>当前用户</td>
+</tr>
+<tr>
+<td>id</td>
+<td>当前用户信息</td>
+</tr>
+<tr>
+<td>cat /etc/sudoers</td>
+<td>可以使用sudo提升到root的用户(需要root权限)</td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>允许普通用户执行一些或者全部的root命令的一个工具</td>
+</tr>
+<tr>
+<td>sudo -l</td>
+<td>列出目前用户可执行与无法执行的指令</td>
+</tr>
+<tr>
+<td>su</td>
+<td>切换当前用户身份到其他用户身份</td>
+</tr>
+</tbody>
+</table>
+<p>环境信息</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>env</td>
+<td>打印系统环境信息</td>
+</tr>
+<tr>
+<td>set</td>
+<td>打印系统环境信息</td>
+</tr>
+<tr>
+<td>echo $PATH</td>
+<td>环境变量中的路径信息</td>
+</tr>
+<tr>
+<td>history</td>
+<td>打印历史命令</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前路径</td>
+</tr>
+<tr>
+<td>cat /etc/profile</td>
+<td>显示默认系统遍历</td>
+</tr>
+<tr>
+<td>cat /etc/shells</td>
+<td>显示可用的shell</td>
+</tr>
+</tbody>
+</table>
+<p>有用的命令</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find / -perm -4000 -type f</td>
+<td>查找SUID的文件</td>
+</tr>
+<tr>
+<td>find / -uid 0 -perm -4000 -type f</td>
+<td>查找root权限的SUID文件</td>
+</tr>
+<tr>
+<td>find / -perm -2 -type f</td>
+<td>找出可写的文件</td>
+</tr>
+<tr>
+<td>find / ! -path “/proc/perm -2 -type f -print”</td>
+<td>查找/proc以外的可写文件</td>
+</tr>
+<tr>
+<td>find / -perm -2 -type d</td>
+<td>找出可写目录</td>
+</tr>
+<tr>
+<td>find /home -name *.r hosts -print</td>
+<td>查找rhosts的配置文件</td>
+</tr>
+<tr>
+<td>find /home -iname *.plan -exec ls -la {} ; -exec cat {}</td>
+<td>查询文件并打印</td>
+</tr>
+<tr>
+<td>ls -ahlR /root/</td>
+<td>查看是否有权限列用户目录</td>
+</tr>
+<tr>
+<td>cat ~/.base_history</td>
+<td>查看当前用户的历史信息</td>
+</tr>
+<tr>
+<td>ls -la ~/.*_history</td>
+<td>查看当前用户的各种历史信息</td>
+</tr>
+<tr>
+<td>ls -la ~/.ssh/</td>
+<td>查看用户ssh登录信息</td>
+</tr>
+<tr>
+<td>ls -la ~/usr/sbin/in.*</td>
+<td>检查inetd服务的配置</td>
+</tr>
+<tr>
+<td>grep -l -i pass /var/log/*.log</td>
+<td>查询包含pass的日志并打印匹配到的行</td>
+</tr>
+<tr>
+<td>ls -la /etc/*.conf</td>
+<td>l列出/etc/下的所有配置文件</td>
+</tr>
+<tr>
+<td>lsof -i -n</td>
+<td>列出打开的文件</td>
+</tr>
+<tr>
+<td>head /var/mail/root</td>
+<td>答应 /var//mail/root的开头</td>
+</tr>
+</tbody>
+</table>
+<p>服务信息</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ps aux</td>
+<td>查看进程信息</td>
+</tr>
+<tr>
+<td>cat /etc/inetd.conf</td>
+<td>由inetd管理的服务列表</td>
+</tr>
+<tr>
+<td>cat /etc/xinetd.conf</td>
+<td>由xinetd管理的服务列表</td>
+</tr>
+<tr>
+<td>cat /etc/exports</td>
+<td>nfs服务器的配置</td>
+</tr>
+</tbody>
+</table>
+<p>作业和任务</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>crontab -l -u %username%</td>
+<td>显示指定用户的计划作业(需要root权限)</td>
+</tr>
+<tr>
+<td>ls -la /etc/cron*</td>
+<td>计划任务</td>
+</tr>
+<tr>
+<td>top</td>
+<td>列出当前进程</td>
+</tr>
+</tbody>
+</table>
+<p>网络、路由和通信</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/sbin/ifconfig -a</td>
+<td>列出网络接口信息</td>
+</tr>
+<tr>
+<td>cat /etc/network/interfaces</td>
+<td>列出网络接口信息</td>
+</tr>
+<tr>
+<td>arp -a</td>
+<td>查看系统arp表</td>
+</tr>
+<tr>
+<td>route</td>
+<td>打印如有信息</td>
+</tr>
+<tr>
+<td>cat /etc/resolv.conf</td>
+<td>查看dns配置信息</td>
+</tr>
+<tr>
+<td>netstat -an</td>
+<td>打印本地端口开放信息</td>
+</tr>
+<tr>
+<td>iptables -L</td>
+<td>列出iptable的配置规则</td>
+</tr>
+<tr>
+<td>cat /etc/services</td>
+<td>查看端口服务映射</td>
+</tr>
+</tbody>
+</table>
+<p>软件信息</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dpkg -l</td>
+<td>软件安装(Debian)</td>
+</tr>
+<tr>
+<td>rpm -qa</td>
+<td>软件安装(Red Hat)</td>
+</tr>
+<tr>
+<td>sudo -V</td>
+<td>查看sudo的版本信息</td>
+</tr>
+<tr>
+<td>httpd -v</td>
+<td>查看apache的版本信息</td>
+</tr>
+<tr>
+<td>apache2 -v</td>
+<td>查看apache的版本信息</td>
+</tr>
+<tr>
+<td>apache2ctl (or apachectl) -M</td>
+<td>列出加载的apache模块</td>
+</tr>
+<tr>
+<td>mysql –version</td>
+<td>mysql的版本信息</td>
+</tr>
+<tr>
+<td>psql -V</td>
+<td>Postgres数据库的版本信息</td>
+</tr>
+<tr>
+<td>psql -v</td>
+<td>perl的版本信息</td>
+</tr>
+<tr>
+<td>java –version</td>
+<td>java的版本信息</td>
+</tr>
+<tr>
+<td>python –version</td>
+<td>python的版本信息</td>
+</tr>
+<tr>
+<td>ruby -v</td>
+<td>ruby的版本信息</td>
+</tr>
+<tr>
+<td>find / -name %program_name%</td>
+<td>查找有用的软件</td>
+</tr>
+<tr>
+<td>which %program_name%</td>
+<td>查找有用的软件</td>
+</tr>
+<tr>
+<td>cat /etc/apache2/envvars</td>
+<td>查看运行apache的账号</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/内网渗透/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2134,7 +2699,7 @@ __asm
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2205,7 +2770,7 @@ __asm
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.2k</span>
+    <span title="Site words total count">9.2k</span>
   
 </div>
 
