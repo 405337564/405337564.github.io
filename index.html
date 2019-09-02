@@ -239,6 +239,370 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/nmap总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Azure">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ming.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/02/nmap总结/" itemprop="url">nmap总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T22:00:36+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  322
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">-----------------</span><br><span class="line">nmap(选项)(参数)</span><br><span class="line">-----------------</span><br><span class="line">-O：激活操作探测；</span><br><span class="line">-P0：值进行扫描，不ping主机；</span><br><span class="line">-PT：是同TCP的ping；</span><br><span class="line">-sV：探测服务版本信息；</span><br><span class="line">-sP：ping扫描，仅发现目标主机是否存活；</span><br><span class="line">-sS：TCP SYN扫描(半开放式扫描，扫描速度高且隐蔽性好)</span><br><span class="line">-sT: TCP 连接扫描(最基础，最稳定的扫描)</span><br><span class="line">-ps：发送同步（SYN）报文；</span><br><span class="line">-PU：发送udp ping；</span><br><span class="line">-PE：强制执行直接的ICMPping；</span><br><span class="line">-PB：默认模式，可以使用ICMPping和TCPping；</span><br><span class="line">-6：使用IPv6地址；</span><br><span class="line">-v：得到更多选项信息；</span><br><span class="line">-d：增加调试信息地输出；</span><br><span class="line">-oN：以人们可阅读的格式输出；</span><br><span class="line">-oX：以xml格式向指定文件输出信息；</span><br><span class="line">-oM：以机器可阅读的格式输出；</span><br><span class="line">-A：使用所有高级扫描选项；</span><br><span class="line">--resume：继续上次执行完的扫描；</span><br><span class="line">-P：指定要扫描的端口，可以是一个单独的端口，用逗号隔开多个端口，使用“-”表示端口范围；</span><br><span class="line">-e：在多网络接口Linux系统中，指定扫描使用的网络接口；</span><br><span class="line">-g：将指定的端口作为源端口进行扫描；</span><br><span class="line">--ttl：指定发送的扫描报文的生存期；</span><br><span class="line">--packet-trace：显示扫描过程中收发报文统计；</span><br><span class="line">--scanflags：设置在扫描报文中的TCP标志。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\1.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\2.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\3.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\4.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\5.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/中间件漏洞/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Azure">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ming.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/中间件漏洞/" itemprop="url">中间件漏洞</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T12:06:41+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Nginx文件解析漏洞"><a href="#Nginx文件解析漏洞" class="headerlink" title="Nginx文件解析漏洞"></a>Nginx文件解析漏洞</h3><h4 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>nginx文件解析漏洞产生的原因是网站中间件版本过低，可将任意文件当作php可执行文件来执行，可导致攻击者执行恶意代码来控制服务器。</p>
+<h4 id="漏洞危害"><a href="#漏洞危害" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><ul>
+<li>机密数据被窃取</li>
+<li>核心业务数据被篡改</li>
+<li>网页被篡改</li>
+<li>数据库所在服务器被攻击变为傀儡主机，导致局域网(内网)被入侵.</li>
+</ul>
+<h4 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h4><ul>
+<li>升级中间件版本</li>
+<li>部署web应用防火墙</li>
+<li>对数据库操作进行监控</li>
+<li>修改php.ini文件，将cgi.fix_pathinfo的值设置为0</li>
+<li>在Nginx配置文件中添加以下代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if($fastcgi_script_name ~ ..*/.*php) &#123;return 403;&#125;</span><br></pre></td></tr></table></figure>
+<p>注：这行代码的意思是当匹配到类似test.jpg/a.php的URL时，将返回403错误代码。</p>
+<h3 id="​-OPTIONS漏洞"><a href="#​-OPTIONS漏洞" class="headerlink" title="​                                       OPTIONS漏洞"></a>​                                       OPTIONS漏洞</h3><h4 id="漏洞描述-1"><a href="#漏洞描述-1" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>启用了不安全的<strong>http方法</strong>，web服务器或应用程序服务器中间件是以不安全的方式配置，这些方法可能标识在服务器上启用了WebDAV，可能<strong>允许未授权</strong>的用户进行利用。此漏洞存在于<strong>IIS容器</strong>下，它扩展了HTTP协议，在GET/POST/HEAD等几个HTTP标准方法以外添加了一些新的方法，比如PUT/MOVE/COPY/DELETE方法，那么攻击者就可以通过<strong>PUT方法</strong>向服务器上传危险脚本。</p>
+<h4 id="​漏洞测试"><a href="#​漏洞测试" class="headerlink" title="​漏洞测试"></a>​漏洞测试</h4><p>请求一个OPTIONS包，查看服务器所支持的HTTP方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS/HTTP/1.1</span><br><span class="line">Host:thief.one</span><br></pre></td></tr></table></figure>
+<h4 id="漏洞危害-1"><a href="#漏洞危害-1" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>可能会在WEB服务器上上传、修改或删除WEB页面、脚本和文件，从而达到网页篡改，控制服务器的目的。</p>
+<h4 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h4><p>如果服务器不需要支持WebDAV，请务必禁用此功能，或者禁止其不安全的HTTP请求方法。    </p>
+<h3 id="​-Struts2远程命令执行"><a href="#​-Struts2远程命令执行" class="headerlink" title="​                                       Struts2远程命令执行"></a>​                                       Struts2远程命令执行</h3><h4 id="漏洞描述-2"><a href="#漏洞描述-2" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>Struts2远程命令执行漏洞是指代码未对用户可控参数做过滤，导致直接带入执行命令的代码中，可被用来执行任意命令。</p>
+<h4 id="漏洞危害-2"><a href="#漏洞危害-2" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><ul>
+<li>攻击者可利用此漏洞直接执行操作系统命令获取WebShell，并且可通过该系统影响内网安全</li>
+<li>可被攻击者用来执行任意命令，写入后门等，进而完全控制服务器，造成严重后果。</li>
+</ul>
+<h4 id="漏洞修复方案-1"><a href="#漏洞修复方案-1" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h4><ul>
+<li>将struts版本升级至最新版</li>
+<li>部署Web应用防火墙</li>
+</ul>
+<h3 id="​-Tomcat远程部署漏洞"><a href="#​-Tomcat远程部署漏洞" class="headerlink" title="​                                       Tomcat远程部署漏洞"></a>​                                       Tomcat远程部署漏洞</h3><h4 id="漏洞描述-3"><a href="#漏洞描述-3" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>这是JSP/PHP网站远程部署的一个工具，管理员只需要远程上传一个WAR格式的文件，便可以发布到网站，方便了开发人员部署代码的同时，也为黑客上传木马敞开了大门。   </p>
+<h4 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h4><p>通过访问：<a href="http://localhost:8080/manager管理地址，尝试弱口令或默认口令，若能登录成功，则存在此漏洞。" target="_blank" rel="noopener">http://localhost:8080/manager管理地址，尝试弱口令或默认口令，若能登录成功，则存在此漏洞。</a></p>
+<h4 id="漏洞危害-3"><a href="#漏洞危害-3" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>导致被上传木马文件，控制服务器。</p>
+<h4 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><ul>
+<li>删除此管理页面</li>
+<li>防火墙设置外网禁止访问此页面，或设置上传文件类型</li>
+<li>中间件设置此页面访问权限</li>
+<li>修改默认在账号密码</li>
+<li>升级tomcat为最新版本 ​      </li>
+</ul>
+<h3 id="JBoss远程部署漏洞"><a href="#JBoss远程部署漏洞" class="headerlink" title="JBoss远程部署漏洞"></a>JBoss远程部署漏洞</h3><h4 id="漏洞描述-4"><a href="#漏洞描述-4" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>JBoss这是一个基于JavaEE的应用服务器，与tomcat类似的是JBoss也有远程部署平台，但不需要登录。</p>
+<h4 id="漏洞测试-1"><a href="#漏洞测试-1" class="headerlink" title="漏洞测试"></a>漏洞测试</h4><p>尝试访问<a href="http://localhost:8080因为一般管理后台为8080端口" target="_blank" rel="noopener">http://localhost:8080因为一般管理后台为8080端口</a></p>
+<h4 id="漏洞危害-4"><a href="#漏洞危害-4" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>上传恶意木马文件，控制服务器</p>
+<h4 id="漏洞修复-1"><a href="#漏洞修复-1" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><ul>
+<li>开启jmx-console密码认证</li>
+<li>删除jmx-console.war与web-console.war</li>
+</ul>
+<h3 id="WebLogic远程部署漏洞"><a href="#WebLogic远程部署漏洞" class="headerlink" title="WebLogic远程部署漏洞"></a>WebLogic远程部署漏洞</h3><h4 id="漏洞描述-5"><a href="#漏洞描述-5" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>WebLogic是一个基于JavaEE架构的中间件，安装完WebLogic默认会监听7001端口，可以用来远程部署网站代码</p>
+<h4 id="漏洞测试-2"><a href="#漏洞测试-2" class="headerlink" title="漏洞测试"></a>漏洞测试</h4><p>默认后台地址：<a href="http://localhost:7001/console/login/loginForm.jsp" target="_blank" rel="noopener">http://localhost:7001/console/login/loginForm.jsp</a></p>
+<h4 id="漏洞危害-5"><a href="#漏洞危害-5" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>可上传恶意木马文件，控制服务器</p>
+<h4 id="漏洞修复-2"><a href="#漏洞修复-2" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><p>删除远程部署页面</p>
+<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h3><h4 id="漏洞描述-6"><a href="#漏洞描述-6" class="headerlink" title="漏洞描述"></a>漏洞描述</h4><p>Apache解析文件的规则是从右到左开始判断解析，如果后缀名为不可识别文件解析，就再往左判断。比如test.php.owf.rar，”.owr”和”.rar”这两种后缀是apache不可识别解析，apache就会把test.php.owf.rar解析成php</p>
+<h4 id="漏洞危害-6"><a href="#漏洞危害-6" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>配置文件上传漏洞，可绕过WAF/黑名单等限制，上传木马文件，控制服务器。</p>
+<h4 id="漏洞修复-3"><a href="#漏洞修复-3" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><ol>
+<li>apache配置文件，禁止.php.这样的文件执行，配置文件里面加入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;File ~ &quot; . (php.|php3.)&quot;&gt;</span><br><span class="line">          Order Allow.Deny</span><br><span class="line">          Deny from all</span><br><span class="line">&lt;/Files&gt;</span><br></pre></td></tr></table></figure>
+<p>​    2.用伪静态能解决这个问题，重写类似.php.*这类文件，打开apache的httpd.conf找到LoadModule/rewrite_module modules/mod_rewrite.so把#号去掉，重启apache，在网站根目录下建立.htaccess文件……..</p>
+<h3 id="Apache-slowloris漏洞"><a href="#Apache-slowloris漏洞" class="headerlink" title="Apache slowloris漏洞"></a>Apache slowloris漏洞</h3><h3 id="IIS6-0远程命令执行漏洞"><a href="#IIS6-0远程命令执行漏洞" class="headerlink" title="IIS6.0远程命令执行漏洞"></a>IIS6.0远程命令执行漏洞</h3><h3 id="IIS短文件名暴力猜解"><a href="#IIS短文件名暴力猜解" class="headerlink" title="IIS短文件名暴力猜解"></a>IIS短文件名暴力猜解</h3><h3 id="java反序列化漏洞"><a href="#java反序列化漏洞" class="headerlink" title="java反序列化漏洞"></a>java反序列化漏洞</h3><h3 id="Apache默认页面泄露漏洞"><a href="#Apache默认页面泄露漏洞" class="headerlink" title="Apache默认页面泄露漏洞"></a>Apache默认页面泄露漏洞</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/Linux信息收集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2699,7 +3063,7 @@ __asm
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2770,7 +3134,7 @@ __asm
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.2k</span>
+    <span title="Site words total count">10.8k</span>
   
 </div>
 

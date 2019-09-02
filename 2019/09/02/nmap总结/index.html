@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="3.内网渗透3.1.Window信息收集3.1.1.基本命令 查询所有计算机名称dsquery computer 查询配置systeminfo 查看版本ver 进程信息tasklist /svc 查看所有环境变量set 查看计划任务schtasks /QUERY /fo LIST /v 查看安装驱动DRIVERQUERY  3.1.2.域信息 获取当前组的计算机名net view 当前所有域net">
+<meta name="description" content="12345678910111213141516171819202122232425262728-----------------nmap(选项)(参数)------------------O：激活操作探测；-P0：值进行扫描，不ping主机；-PT：是同TCP的ping；-sV：探测服务版本信息；-sP：ping扫描，仅发现目标主机是否存活；-sS：TCP SYN扫描(半开放式扫描，扫描速度高且隐">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内网渗透">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/内网渗透/index.html">
+<meta property="og:title" content="nmap总结">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/nmap总结/index.html">
 <meta property="og:site_name" content="Azure">
-<meta property="og:description" content="3.内网渗透3.1.Window信息收集3.1.1.基本命令 查询所有计算机名称dsquery computer 查询配置systeminfo 查看版本ver 进程信息tasklist /svc 查看所有环境变量set 查看计划任务schtasks /QUERY /fo LIST /v 查看安装驱动DRIVERQUERY  3.1.2.域信息 获取当前组的计算机名net view 当前所有域net">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728-----------------nmap(选项)(参数)------------------O：激活操作探测；-P0：值进行扫描，不ping主机；-PT：是同TCP的ping；-sV：探测服务版本信息；-sP：ping扫描，仅发现目标主机是否存活；-sS：TCP SYN扫描(半开放式扫描，扫描速度高且隐">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T09:34:24.596Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/nmap总结/E:/blog/myblog/source/_posts/nmap总结/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/nmap总结/E:/blog/myblog/source/_posts/nmap总结/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/nmap总结/E:/blog/myblog/source/_posts/nmap总结/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/nmap总结/E:/blog/myblog/source/_posts/nmap总结/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/nmap总结/E:/blog/myblog/source/_posts/nmap总结/5.jpg">
+<meta property="og:updated_time" content="2019-09-02T14:06:03.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内网渗透">
-<meta name="twitter:description" content="3.内网渗透3.1.Window信息收集3.1.1.基本命令 查询所有计算机名称dsquery computer 查询配置systeminfo 查看版本ver 进程信息tasklist /svc 查看所有环境变量set 查看计划任务schtasks /QUERY /fo LIST /v 查看安装驱动DRIVERQUERY  3.1.2.域信息 获取当前组的计算机名net view 当前所有域net">
+<meta name="twitter:title" content="nmap总结">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728-----------------nmap(选项)(参数)------------------O：激活操作探测；-P0：值进行扫描，不ping主机；-PT：是同TCP的ping；-sV：探测服务版本信息；-sP：ping扫描，仅发现目标主机是否存活；-sS：TCP SYN扫描(半开放式扫描，扫描速度高且隐">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/02/nmap总结/E:/blog/myblog/source/_posts/nmap总结/1.png">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/01/内网渗透/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/02/nmap总结/">
 
 
 
 
 
-  <title>内网渗透 | Azure</title>
+  <title>nmap总结 | Azure</title>
   
 
 
@@ -242,7 +248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/内网渗透/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/nmap总结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Azure">
@@ -259,7 +265,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">内网渗透</h1>
+          <h1 class="post-title" itemprop="name headline">nmap总结</h1>
         
 
         <div class="post-meta">
@@ -271,8 +277,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-01T17:08:38+08:00">
-                2019-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T22:00:36+08:00">
+                2019-09-02
               </time>
             
 
@@ -303,7 +309,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  205
+                  322
                 </span>
               
 
@@ -340,32 +346,12 @@
       
 
       
-        <h2 id="3-内网渗透"><a href="#3-内网渗透" class="headerlink" title="3.内网渗透"></a>3.内网渗透</h2><h3 id="3-1-Window信息收集"><a href="#3-1-Window信息收集" class="headerlink" title="3.1.Window信息收集"></a>3.1.Window信息收集</h3><h4 id="3-1-1-基本命令"><a href="#3-1-1-基本命令" class="headerlink" title="3.1.1.基本命令"></a>3.1.1.基本命令</h4><ul>
-<li>查询所有计算机名称<code>dsquery computer</code></li>
-<li>查询配置<code>systeminfo</code></li>
-<li>查看版本<code>ver</code></li>
-<li>进程信息<code>tasklist /svc</code></li>
-<li>查看所有环境变量<code>set</code></li>
-<li>查看计划任务<code>schtasks /QUERY /fo LIST /v</code></li>
-<li>查看安装驱动<code>DRIVERQUERY</code></li>
-</ul>
-<h4 id="3-1-2-域信息"><a href="#3-1-2-域信息" class="headerlink" title="3.1.2.域信息"></a>3.1.2.域信息</h4><ul>
-<li>获取当前组的计算机名<code>net view</code></li>
-<li>当前所有域<code>net view /domain</code></li>
-<li>查看域中的用户名<code>dsquery user</code></li>
-<li>查看域组名称<code>net group /domain</code></li>
-<li>查看域管理员<code>net group &quot;Domain Admins&quot; /domain</code></li>
-<li>查看域控制器<code>net group &quot;Domain controllers&quot;</code></li>
-</ul>
-<h4 id="3-1-3-用户信息"><a href="#3-1-3-用户信息" class="headerlink" title="3.1.3.用户信息"></a>3.1.3.用户信息</h4><ul>
-<li>查看用户<code>net user</code></li>
-<li>查看在线用户<code>qwinsta / query user</code></li>
-<li>查看当前计算机名，全名，用户名，系统版本，工作站域，登陆域<code>net config Workstation</code></li>
-</ul>
-<h4 id="3-1-4-网络信息"><a href="#3-1-4-网络信息" class="headerlink" title="3.1.4.网络信息"></a>3.1.4.网络信息</h4><ul>
-<li>域控信息<code>nltest /dclist:xx</code></li>
-<li></li>
-</ul>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">-----------------</span><br><span class="line">nmap(选项)(参数)</span><br><span class="line">-----------------</span><br><span class="line">-O：激活操作探测；</span><br><span class="line">-P0：值进行扫描，不ping主机；</span><br><span class="line">-PT：是同TCP的ping；</span><br><span class="line">-sV：探测服务版本信息；</span><br><span class="line">-sP：ping扫描，仅发现目标主机是否存活；</span><br><span class="line">-sS：TCP SYN扫描(半开放式扫描，扫描速度高且隐蔽性好)</span><br><span class="line">-sT: TCP 连接扫描(最基础，最稳定的扫描)</span><br><span class="line">-ps：发送同步（SYN）报文；</span><br><span class="line">-PU：发送udp ping；</span><br><span class="line">-PE：强制执行直接的ICMPping；</span><br><span class="line">-PB：默认模式，可以使用ICMPping和TCPping；</span><br><span class="line">-6：使用IPv6地址；</span><br><span class="line">-v：得到更多选项信息；</span><br><span class="line">-d：增加调试信息地输出；</span><br><span class="line">-oN：以人们可阅读的格式输出；</span><br><span class="line">-oX：以xml格式向指定文件输出信息；</span><br><span class="line">-oM：以机器可阅读的格式输出；</span><br><span class="line">-A：使用所有高级扫描选项；</span><br><span class="line">--resume：继续上次执行完的扫描；</span><br><span class="line">-P：指定要扫描的端口，可以是一个单独的端口，用逗号隔开多个端口，使用“-”表示端口范围；</span><br><span class="line">-e：在多网络接口Linux系统中，指定扫描使用的网络接口；</span><br><span class="line">-g：将指定的端口作为源端口进行扫描；</span><br><span class="line">--ttl：指定发送的扫描报文的生存期；</span><br><span class="line">--packet-trace：显示扫描过程中收发报文统计；</span><br><span class="line">--scanflags：设置在扫描报文中的TCP标志。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\1.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\2.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\3.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\4.png" alt=""></p>
+<p><img src="/2019/09/02/nmap总结/E:/blog\myblog\source\_posts\nmap总结\5.jpg" alt=""></p>
 
       
     </div>
@@ -390,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/01/信息收集/" rel="next" title="信息收集">
-                <i class="fa fa-chevron-left"></i> 信息收集
+              <a href="/2019/08/02/中间件漏洞/" rel="next" title="中间件漏洞">
+                <i class="fa fa-chevron-left"></i> 中间件漏洞
               </a>
             
           </div>
@@ -399,10 +385,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/24/Linux信息收集/" rel="prev" title="Linux信息收集">
-                Linux信息收集 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,17 +436,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -524,22 +497,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-内网渗透"><span class="nav-number">1.</span> <span class="nav-text">3.内网渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Window信息收集"><span class="nav-number">1.1.</span> <span class="nav-text">3.1.Window信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-基本命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">3.1.1.基本命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-域信息"><span class="nav-number">1.1.2.</span> <span class="nav-text">3.1.2.域信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-用户信息"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.1.3.用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-网络信息"><span class="nav-number">1.1.4.</span> <span class="nav-text">3.1.4.网络信息</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
